@@ -27,7 +27,6 @@ export default function Landing({ page }: LandingProps) {
       <PageHead page={page} />
       <BlockRenderer block={hero} />
       <BlockRenderer block={sections} />
-      <BlockRenderer block={sections} />
     </div>
   );
 }
