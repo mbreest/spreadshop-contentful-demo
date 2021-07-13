@@ -19,8 +19,8 @@ export const SingleAsset = ({ fields }: TypeSingleAsset) => {
             {illustrations &&
               illustrations.map(function (illustration, idx) {
                 return (
-                  <div className="flex flex-shrink-0 w-96 p-2">                  
-                    <img key={idx} src={illustration.secure_url} />
+                  <div  key={"sa-illustration-" + idx} className="flex flex-shrink-0 w-96 p-2">                  
+                    <img src={illustration.secure_url} />
                   </div>
                 );
               })}
