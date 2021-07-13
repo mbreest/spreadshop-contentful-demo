@@ -46,12 +46,12 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
               
             })}
         </div>
-        <div className="pt-4 flex overflow-x-scroll items-center">        
+        <div className="pt-4 flex flex-wrap items-center">        
           {logos &&
             logos.map(function (logo, idx) {
               return (
                 <div key={idx} className="flex-shrink-0 p-4">
-                  <img src={logo.secure_url} className="w-24"/>
+                  <img src={logo.secure_url} className="w-28"/>
                 </div>
               );
             })}
