@@ -10,10 +10,12 @@ export const UspList = ({ fields }: TypeUspList) => {
 
   return (
     <Background {...background.fields}>
-      <div className="mx-auto flex flex-wrap flex-col md:flex-row items-start">
-        <div className="flex flex-col w-full justify-center items-start">
+      <div className="w-full flex flex-col">
+        <div className="w-full grid justify-items-center p-8">
           <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
           <div className="leading-relaxed text-lg text-gray-700 py-6">{details}</div>
+        </div>   
+        <div className="flex flex-row flex-wrap justify-center">
           {usps &&
             usps.map(function (usp, idx) {
               let linkProps1;
@@ -26,25 +28,33 @@ export const UspList = ({ fields }: TypeUspList) => {
               }
 
               return (
-                <div key={idx}>
-                  <h3>{usp.fields.title}</h3>
+                <div key={"usplist-" + idx} className="flex-shrink-0 w-82 pr-8 pt-4 grid justify-items-center">                  
                   {usp.fields.illustration && (
-                    <img src={usp.fields.illustration[0].secure_url} width="200" height="200" />
+                    <div className="w-30 h-30">                       
+                      <img src={usp.fields.illustration[0].secure_url} className="max-h-28"/>
+                    </div>
                   )}
-                  {usp.fields.details && <div>{usp.fields.details}</div>}
-                  {linkProps1 && (
-                    <Link {...linkProps1}>
-                      <a className="w-full md:w-auto text-gray-700 font-semibold  px-3 py-2 text-center">
-                        {usp.fields.link.fields.text}
-                      </a>
-                    </Link>
-                  )}
+                  <div className="grid justify-items-center">
+                    <h3 className="font-bold">{usp.fields.title}</h3>
+                    {usp.fields.details && <div className="text-center">{usp.fields.details}</div>}
+                    {linkProps1 && (
+                      <div className="pt-4">
+                        <Link {...linkProps1}>
+                          <a className="w-full md:w-auto text-gray-700 font-semibold text-center">
+                            {usp.fields.link.fields.text}
+                          </a>
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
               );
             })}
+        </div>   
+        <div>
           <Cta {...{cta}}/>        
-        </div>
-      </div>
+        </div>          
+      </div>    
     </Background>
   );
 };

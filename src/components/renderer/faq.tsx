@@ -3,15 +3,7 @@ import { TypeFaq } from 'lib/types';
 import { Cta } from 'components/cta';
 
 export const Faq = ({ fields }: TypeFaq) => {
-  const {
-    title,
-    background,
-    entries,
-    questions,
-    questionDetails,
-    questionCta1,
-    questionCta2,
-  } = fields;
+  const { title, background, entries, questions, questionDetails, questionCta1, questionCta2 } = fields;
 
   const styling = {
     backgroundColor: background == 'White' ? 'white' : background == 'Light' ? '#F2F2F2' : 'dark',

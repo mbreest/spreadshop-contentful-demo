@@ -6,24 +6,15 @@ import { Cta } from 'components/cta';
 export const Banner = ({ fields }: TypeBanner) => {
   const { title, details, background, cta } = fields;
 
-  let linkProps;
-  if (cta) {
-    if ('url' in cta.fields.buttonTarget.fields) {
-      linkProps = { href: cta.fields.buttonTarget.fields.url };
-    } else if ('slug' in cta.fields.buttonTarget.fields) {
-      linkProps = { page: cta.fields.buttonTarget };
-    }
-  }
-
   return (
     <Background {...background.fields}>
-      <div className="mx-auto flex flex-wrap flex-col md:flex-row items-start">
-        <div className="flex flex-col w-full justify-center items-start">
+      <div className="mx-auto flex h-80 items-center">      
+        <div className="w-full grid justify-items-center">        
           <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
-          <div className="leading-relaxed text-lg text-gray-700 py-6">{details}</div>
-          <Cta {...{cta}}/>
+          <div className="text-lg text-gray-700 py-6">{details}</div>
+          <Cta {...{cta}}/>  
         </div>
-      </div>
+      </div>      
     </Background>
   );
 };
