@@ -21,19 +21,20 @@ export const Hero = ({ fields }: TypeHeroImage) => {
 
   return (
     <Background {...background.fields}>
-      <div className="px-8 py-20 mx-auto flex flex-wrap flex-col md:flex-row items-start">
+      <div className="mx-auto flex h-80">
         <div className="flex flex-col w-full justify-center items-start">
-          <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
+          <h1 className="pt-4 text-4xl font-medium leading-tight text-gray-900">{title}</h1>
           <div className="leading-relaxed text-lg text-gray-700 py-6">{details}</div>
           {linkProps && (
             <Link {...linkProps}>
-              <a className="w-full md:w-auto bg-yellow-500 text-white font-semibold  px-3 py-2 text-center">
+              <a className="w-auto bg-yellow-600 text-white font-semibold  px-3 py-2 text-center">
                 {cta.fields.buttonLabel}
               </a>
             </Link>
           )}
         </div>
       </div>
+     
     </Background>
   );
 };

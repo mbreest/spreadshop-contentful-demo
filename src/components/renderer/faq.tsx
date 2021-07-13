@@ -38,8 +38,8 @@ export const Faq = ({ fields }: TypeFaq) => {
   };
 
   return (
-    <div className="bg-white mx-auto max-w-screen-xl" style={styling}>
-      <div className="px-8 py-20 mx-auto flex flex-wrap flex-col md:flex-row items-start">
+    <div className="mx-auto max-w-screen-xl" style={styling}>
+      <div className="mx-auto flex flex-wrap flex-col md:flex-row items-start">
         <div className="flex flex-col w-full justify-center items-start">
           <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
           <div className="leading-relaxed text-lg text-gray-700 py-6">{questions}</div>

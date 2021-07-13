@@ -21,7 +21,7 @@ export const Background = ({ background, image, imageOverlay, imageIllustration,
   }
     
   return (
-    <div className="bg-white mx-auto max-w-screen-xl" style={styling}>
+    <div className="mx-auto max-w-screen-xl px-6 py-10" style={styling}>
         {children}
     </div>
   )

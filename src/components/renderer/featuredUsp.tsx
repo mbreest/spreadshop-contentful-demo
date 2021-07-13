@@ -17,31 +17,39 @@ export const FeaturedUsp = ({ fields }: TypeFeaturedUsp) => {
   }
 
   return (
-    <Background {...background.fields}>
-      <div className="px-8 py-20 mx-auto flex flex-wrap flex-col md:flex-row items-start">
-        <div className="flex flex-col w-full justify-center items-start">
+    <Background {...background.fields}>      
+      <div className="w-full flex flex-col">
+        <div className="w-full grid justify-items-center">
           <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
-          <div className="leading-relaxed text-lg text-gray-700 py-6">{details}</div>
-          {usps.map(function (usp, idx) {
-            return (
-              <div key={idx}>
-                <h3>{usp.fields.title}</h3>
+          <div className="text-lg text-gray-700 py-6">{details}</div>
+        </div>
+                
+        <div className="pt-4 mx-auto flex flex-row flex-nowrap">
+        {usps.map(function (usp, idx) {
+          return (          
+            <div key={"usp-" + idx} className="flex flex-col justify-top items-start flex-shrink-0 w-80 p-4">                
                 {usp.fields.illustration && (
-                  <img src={usp.fields.illustration[0].secure_url} width="200" height="200" />
+                  <div className="h-60 w-60 align-top">
+                    <img src={usp.fields.illustration[0].secure_url}/>
+                  </div>
                 )}
+                <h2 className="font-medium pb-4">{usp.fields.title}</h2>
                 {usp.fields.details && <span>{usp.fields.details}</span>}
-              </div>
-            );
-          })}
-          {linkProps && (
+            </div>    
+          );
+        })}
+        </div>
+        
+        {linkProps && (
+          <div className="flex w-full justify-center pt-8 pb-8">
             <Link {...linkProps}>
-              <a className="w-full md:w-auto bg-yellow-500 text-white font-semibold  px-3 py-2 text-center">
+              <a className="bg-yellow-500 text-white font-semibold  px-3 py-2 text-center">
                 {cta.fields.buttonLabel}
               </a>
             </Link>
-          )}
-        </div>
-      </div>
+          </div>
+        )}      
+      </div>      
     </Background>
   );
 };
