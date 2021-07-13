@@ -14,13 +14,17 @@ export const Calculator = ({ fields }: TypeCalculator) => {
 
   return (
     <Background {...background.fields}>
-      <div className="mx-auto flex flex-wrap flex-col md:flex-row items-start">
-        <div className="flex flex-col w-full justify-center items-start">
+      <div className="w-full flex flex-col">
+        <div className="w-full grid justify-items-center p-8">
           <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
-          <div className="leading-relaxed text-lg text-gray-700 py-6">{textComp}</div>
-          <div className="leading-relaxed text-lg text-gray-700 py-6">{details}</div>
-          <Cta {...{cta}}/>
         </div>
+        <div className="flex flex-row p-4">
+          <div className="leading-relaxed text-lg text-gray-700 w-1/2 pr-8">{textComp}</div>
+          <div className="leading-relaxed text-lg text-gray-700 w-1/2">{details}</div>
+        </div>
+        <div className="flex w-full justify-center pt-8 pb-8">
+          <Cta {...{cta}}/>
+        </div>              
       </div>
     </Background>
   );

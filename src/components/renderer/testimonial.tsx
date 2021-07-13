@@ -28,7 +28,7 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
                   </div>
                   <div className="md:w-3/5 md:pl-8 ">
                     <div>{textComp}</div>
-                    <div className="font-bold">{quote.fields.author}</div>
+                    <div className="font-bold pt-4">{quote.fields.author}</div>
                   </div>
                 </div>
               );
