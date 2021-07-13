@@ -14,20 +14,22 @@ export const FeaturedUsp = ({ fields }: TypeFeaturedUsp) => {
           <div className="text-lg text-gray-700 py-6">{details}</div>
         </div>
                 
-        <div className="pt-4 mx-auto flex flex-row flex-nowrap">
-        {usps.map(function (usp, idx) {
-          return (          
-            <div key={"usp-" + idx} className="flex flex-col justify-top items-start flex-shrink-0 w-80 p-4">                
-                {usp.fields.illustration && (
-                  <div className="h-60 w-60 align-top">
-                    <img src={usp.fields.illustration[0].secure_url}/>
-                  </div>
-                )}
-                <h2 className="font-medium pb-4">{usp.fields.title}</h2>
-                {usp.fields.details && <span>{usp.fields.details}</span>}
-            </div>    
-          );
-        })}
+        <div className="w-full grid justify-center">        
+          <div className="pt-4 flex flex-row flex-nowrap justify-start overflow-x-scroll">
+          {usps.map(function (usp, idx) {
+            return (          
+              <div key={"usp-" + idx} className="flex flex-col justify-top items-start flex-shrink-0 w-80 p-4">                
+                  {usp.fields.illustration && (
+                    <div className="h-60 w-60 align-top">
+                      <img src={usp.fields.illustration[0].secure_url}/>
+                    </div>
+                  )}
+                  <h2 className="font-medium pb-4">{usp.fields.title}</h2>
+                  {usp.fields.details && <span>{usp.fields.details}</span>}
+              </div>    
+            );
+          })}
+          </div>
         </div>
 
         <div className="flex w-full justify-center pt-8 pb-8">     

@@ -8,20 +8,29 @@ export const Carousel = ({ fields }: TypeCarousel) => {
  
   return (
     <Background {...background.fields}>
-      <div className="mx-auto flex flex-wrap flex-col md:flex-row items-start">
-        <div className="flex flex-col w-full justify-center items-start">
+      <div className="w-full flex flex-col">
+        <div className="w-full grid justify-items-center">
           <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
-          <div className="leading-relaxed text-lg text-gray-700 py-6">{details}</div>
+          <div className="text-lg text-gray-700 py-6">{details}</div>
+        </div>
+        
           {categories.length == 1 &&
-            categories.map(function (category, idx) {
-              return (
-                <div key={idx}>
+            <>
+              {categories.map(function (category, idx) {
+              return (                
+                <div key={"category-" + idx} className="pt-4 flex flex-row flex-nowrap justify-start overflow-x-scroll">
                   {category.fields.illustrations.map(function (illustration, idx1) {
-                    return <img key={idx1} src={illustration.secure_url} />;
+                    return (
+                      <div key={"category-" + idx} className="flex flex-shrink-0 w-60 p-2">
+                        <img key={idx1} src={illustration.secure_url}/>
+                      </div>
+                    )
                   })}
                 </div>
               );
             })}
+            </>
+          }
           {categories.length > 1 &&
             categories.map(function (category, idx) {
               return (
@@ -32,9 +41,10 @@ export const Carousel = ({ fields }: TypeCarousel) => {
                   })}
                 </div>
               );
-            })}
-         <Cta {...{cta}}/>
-        </div>
+            })}         
+      </div>
+      <div className="flex w-full justify-center pt-8 pb-8">     
+        <Cta {...{cta}}/>        
       </div>
     </Background>
   );
