@@ -9,9 +9,12 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
 
   return (
     <Background {...background.fields}>
-      <div className="mx-auto flex flex-wrap flex-col md:flex-row items-start">
-        <div className="flex flex-col w-full justify-center items-start">
+      <div className="w-full flex flex-col grid justify-items-center">
+        <div className="w-full grid justify-items-center">        
           <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
+        </div>
+
+        <div className="pt-4 flex flex-row flex-nowrap justify-start overflow-x-scroll">        
           {quotes &&
             quotes.map(function (quote, idx) {
               const textComp = isRichText(quote.fields.quote)
@@ -19,21 +22,29 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
                 : quote.fields.quote;
 
               return (
-                <div key={idx}>
-                  <span>{textComp}</span>
-                  <span>{quote.fields.author}</span>
-                  {showLogo && <img src={quote.fields.illustration[0].secure_url} />}
+                <div key={idx} className="w-full md:flex md:flex-row md:p-8 items-center">
+                  <div className="md:w-2/5">
+                    {showLogo && <img src={quote.fields.illustration[0].secure_url} />}
+                  </div>
+                  <div className="md:w-3/5 md:pl-8 ">
+                    <div>{textComp}</div>
+                    <div className="font-bold">{quote.fields.author}</div>
+                  </div>
                 </div>
               );
             })}
+        </div>
+        <div className="pt-4 flex overflow-x-scroll items-center">        
           {logos &&
             logos.map(function (logo, idx) {
               return (
-                <div key={idx}>
-                  <img src={logo.secure_url} width="100" />
+                <div key={idx} className="flex-shrink-0 p-4">
+                  <img src={logo.secure_url} className="w-24"/>
                 </div>
               );
             })}
+        </div>
+        <div className="flex w-full justify-center pt-8 pb-8">     
           <Cta {...{cta}}/>
         </div>
       </div>
