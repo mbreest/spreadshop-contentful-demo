@@ -21,17 +21,29 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
                 ? renderRichText(quote.fields.quote)
                 : quote.fields.quote;
 
-              return (
-                <div key={idx} className="w-full md:flex md:flex-row md:p-8 items-center">
-                  <div className="md:w-2/5">
-                    {showLogo && <img src={quote.fields.illustration[0].secure_url} />}
+              if (showLogo) {
+                return (
+                  <div key={idx} className="w-full flex-shrink-0 md:flex md:flex-row md:p-8 items-center">
+                    <div className="md:w-2/5">
+                      {showLogo && <img src={quote.fields.illustration[0].secure_url} />}
+                    </div>
+                    <div className="md:w-3/5 md:pl-8 ">
+                      <div>{textComp}</div>
+                      <div className="font-bold pt-4">{quote.fields.author}</div>
+                    </div>
                   </div>
-                  <div className="md:w-3/5 md:pl-8 ">
-                    <div>{textComp}</div>
-                    <div className="font-bold pt-4">{quote.fields.author}</div>
+                );
+              } else {
+                return (
+                  <div key={idx} className="w-full flex-shrink-0 md:flex md:flex-row md:p-8 items-center">                    
+                    <div className="md:full md:pl-8 ">
+                      <div>{textComp}</div>
+                      <div className="font-bold pt-4">{quote.fields.author}</div>
+                    </div>
                   </div>
-                </div>
-              );
+                );
+              }
+              
             })}
         </div>
         <div className="pt-4 flex overflow-x-scroll items-center">        

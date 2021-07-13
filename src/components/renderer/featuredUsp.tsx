@@ -24,7 +24,7 @@ export const FeaturedUsp = ({ fields }: TypeFeaturedUsp) => {
                       <img src={usp.fields.illustration[0].secure_url}/>
                     </div>
                   )}
-                  <h2 className="font-medium pb-4">{usp.fields.title}</h2>
+                  <h2 className="font-bold pb-4">{usp.fields.title}</h2>
                   {usp.fields.details && <span>{usp.fields.details}</span>}
               </div>    
             );

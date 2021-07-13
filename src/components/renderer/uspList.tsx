@@ -28,7 +28,7 @@ export const UspList = ({ fields }: TypeUspList) => {
               }
 
               return (
-                <div key={"usplist-" + idx} className="flex-shrink-0 w-82 pr-8 pt-4 grid justify-items-center">                  
+                <div key={"usplist-" + idx} className="w-60 pr-8 pt-4 grid justify-items-center">                  
                   {usp.fields.illustration && (
                     <div className="w-30 h-30">                       
                       <img src={usp.fields.illustration[0].secure_url} className="max-h-28"/>

@@ -31,17 +31,25 @@ export const Carousel = ({ fields }: TypeCarousel) => {
             })}
             </>
           }
-          {categories.length > 1 &&
-            categories.map(function (category, idx) {
-              return (
-                <div key={idx}>
-                  {category.fields.title}
-                  {category.fields.illustrations.map(function (illustration, idx1) {
-                    return <img key={idx1} src={illustration.secure_url} />;
-                  })}
-                </div>
-              );
-            })}         
+          <div>          
+            {categories.length > 1 &&
+              categories.map(function (category, idx) {
+                return (          
+                  <>
+                    <div className="pl-4 pt-4">{category.fields.title}</div>      
+                    <div key={"category-" + idx} className="flex flex-row flex-nowrap w-full justify-start overflow-x-scroll">                  
+                      {category.fields.illustrations.map(function (illustration, idx1) {
+                        return (
+                          <div key={"category-" + idx} className="flex flex-shrink-0 w-60 p-2">
+                            <img key={idx1} src={illustration.secure_url} />;
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </>
+                );
+              })}        
+            </div> 
       </div>
       <div className="flex w-full justify-center pt-8 pb-8">     
         <Cta {...{cta}}/>        
