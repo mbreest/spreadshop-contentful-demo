@@ -1,20 +1,10 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { Link } from 'components/link';
-
 import { TypeFeaturedUsp } from 'lib/types';
 import { Background } from 'components/background';
+import { Cta } from 'components/cta';
 
 export const FeaturedUsp = ({ fields }: TypeFeaturedUsp) => {
-  const { title, details, background, usps, cta } = fields;
-
-  let linkProps;
-  if (cta) {
-    if ('url' in cta.fields.buttonTarget.fields) {
-      linkProps = { href: cta.fields.buttonTarget.fields.url };
-    } else if ('slug' in cta.fields.buttonTarget.fields) {
-      linkProps = { page: cta.fields.buttonTarget };
-    }
-  }
+  const { title, details, background, usps, cta } = fields;  
 
   return (
     <Background {...background.fields}>      
@@ -39,16 +29,10 @@ export const FeaturedUsp = ({ fields }: TypeFeaturedUsp) => {
           );
         })}
         </div>
-        
-        {linkProps && (
-          <div className="flex w-full justify-center pt-8 pb-8">
-            <Link {...linkProps}>
-              <a className="bg-yellow-500 text-white font-semibold  px-3 py-2 text-center">
-                {cta.fields.buttonLabel}
-              </a>
-            </Link>
-          </div>
-        )}      
+
+        <div className="flex w-full justify-center pt-8 pb-8">     
+          <Cta {...{cta}}/>
+        </div>      
       </div>      
     </Background>
   );

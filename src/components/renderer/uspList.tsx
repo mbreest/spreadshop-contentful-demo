@@ -3,18 +3,10 @@ import { Link } from 'components/link';
 
 import { TypeUspList } from 'lib/types';
 import { Background } from 'components/background';
+import { Cta } from 'components/cta';
 
 export const UspList = ({ fields }: TypeUspList) => {
   const { title, details, background, usps, twoColumn, cta } = fields;
-
-  let linkProps;
-  if (cta) {
-    if ('url' in cta.fields.buttonTarget.fields) {
-      linkProps = { href: cta.fields.buttonTarget.fields.url };
-    } else if ('slug' in cta.fields.buttonTarget.fields) {
-      linkProps = { page: cta.fields.buttonTarget };
-    }
-  }
 
   return (
     <Background {...background.fields}>
@@ -50,13 +42,7 @@ export const UspList = ({ fields }: TypeUspList) => {
                 </div>
               );
             })}
-          {linkProps && (
-            <Link {...linkProps}>
-              <a className="w-full md:w-auto bg-yellow-500 text-white font-semibold  px-3 py-2 text-center">
-                {cta.fields.buttonLabel}
-              </a>
-            </Link>
-          )}
+          <Cta {...{cta}}/>        
         </div>
       </div>
     </Background>

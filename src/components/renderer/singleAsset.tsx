@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { Link } from 'components/link';
-
 import { TypeSingleAsset } from 'lib/types';
 import { Background } from 'components/background';
+import { Cta } from 'components/cta';
 
 export const SingleAsset = ({ fields }: TypeSingleAsset) => {
   const { title, details, background, illustrations, cta } = fields;
@@ -26,13 +25,7 @@ export const SingleAsset = ({ fields }: TypeSingleAsset) => {
             illustrations.map(function (illustration, idx) {
               return <img key={idx} src={illustration.secure_url} />;
             })}
-          {linkProps && (
-            <Link {...linkProps}>
-              <a className="w-full md:w-auto bg-yellow-500 text-white font-semibold  px-3 py-2 text-center">
-                {cta.fields.buttonLabel}
-              </a>
-            </Link>
-          )}
+          <Cta {...{cta}}/>
         </div>
       </div>
     </Background>

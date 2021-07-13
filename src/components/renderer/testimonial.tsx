@@ -1,21 +1,11 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { Link } from 'components/link';
-
 import { TypeTestimonial } from 'lib/types';
 import { Background } from 'components/background';
+import { Cta } from 'components/cta';
 import { isRichText, renderRichText } from 'lib/rich-text';
 
 export const Testimonial = ({ fields }: TypeTestimonial) => {
   const { title, background, showLogo, quotes, logos, cta } = fields;
-
-  let linkProps;
-  if (cta) {
-    if ('url' in cta.fields.buttonTarget.fields) {
-      linkProps = { href: cta.fields.buttonTarget.fields.url };
-    } else if ('slug' in cta.fields.buttonTarget.fields) {
-      linkProps = { page: cta.fields.buttonTarget };
-    }
-  }
 
   return (
     <Background {...background.fields}>
@@ -44,13 +34,7 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
                 </div>
               );
             })}
-          {linkProps && (
-            <Link {...linkProps}>
-              <a className="w-full md:w-auto bg-yellow-500 text-white font-semibold  px-3 py-2 text-center">
-                {cta.fields.buttonLabel}
-              </a>
-            </Link>
-          )}
+          <Cta {...{cta}}/>
         </div>
       </div>
     </Background>
