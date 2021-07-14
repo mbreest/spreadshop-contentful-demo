@@ -8,7 +8,6 @@ import { PageHead } from 'components/page-head';
 import { PageContentTypes } from 'lib/constants';
 import { TypePage, TypePageLandingpage } from 'lib/types';
 import { BlockRenderer } from 'components/renderer/block-renderer';
-import { withLocale } from 'lib/translations';
 
 type LandingProps = {
   page: TypePage;
@@ -31,7 +30,7 @@ export default function Landing({ page }: LandingProps) {
   );
 }
 
-export const getServerSideProps = withLocale(async (locale, { params, query }) => {
+export async function getServerSideProps({ params, query, locale }) {
   const slug = String(params.slug ?? 'homepage');
   const preview = isPreviewEnabled(query);
   const page = await getPage({
@@ -44,4 +43,4 @@ export const getServerSideProps = withLocale(async (locale, { params, query }) =
   return {
     props: { page },
   };
-});
+}

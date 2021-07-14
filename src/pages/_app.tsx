@@ -4,10 +4,9 @@ import Head from 'next/head';
 import 'styles/index.css';
 import { PreviewBanner } from 'components/preview-banner';
 import { TopNavigation } from 'components/top-navigation';
-import App, { AppContext } from 'next/app';
-import { getLocale, LocaleContext, UnknownLocale } from 'lib/translations';
+import { LocaleContext } from 'lib/translations';
 
-function HelpdeskApp({ Component, pageProps }) {
+function SpreadshopApp({ Component, pageProps }) {
   const { locale, ...otherPageProps } = pageProps;
 
   return (
@@ -34,19 +33,4 @@ function HelpdeskApp({ Component, pageProps }) {
   );
 }
 
-HelpdeskApp.getInitialProps = async (appContext: AppContext) => {
-  const { pageProps, ...other } = await App.getInitialProps(appContext);
-  const locale = getLocale(appContext.ctx.query.locale);
-
-  switch (locale) {
-    case UnknownLocale:
-      appContext.ctx.res.writeHead(302, { Location: '/' }).end();
-      break;
-    case undefined:
-      return { pageProps, ...other };
-    default:
-      return { pageProps: { ...pageProps, locale }, ...other };
-  }
-};
-
-export default HelpdeskApp;
+export default SpreadshopApp;

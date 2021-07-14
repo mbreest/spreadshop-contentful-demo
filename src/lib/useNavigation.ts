@@ -3,37 +3,35 @@ import { useRouter } from 'next/router';
 import { TypePage } from './types';
 import { PageContentTypes } from './constants';
 import { isPreviewEnabled, withPreviewParam } from './preview';
-import { useLocaleContext } from './translations';
-import type { Locale } from './translations';
 
 export interface LinkProps {
   href: string;
-  as: string;
+  as: string;  
 }
 
-function linkToPage(locale: Locale, page: TypePage, isPreview: boolean): LinkProps {
+function linkToPage(page: TypePage, isPreview: boolean): LinkProps {
   const slug = page.fields.slug;
-  const pageType = page.fields.content?.sys.contentType.sys.id;
+  const pageType = page.fields.content?.sys.contentType.sys.id;  
 
   switch (pageType) {
     case PageContentTypes.HelpDeskArticle: {
       return {
-        href: withPreviewParam('/[locale]/helpdesk/[slug]', isPreview),
-        as: withPreviewParam(`/${locale}/helpdesk/${slug}`, isPreview),
+        href: withPreviewParam('/helpdesk/[slug]', isPreview),
+        as: withPreviewParam(`/helpdesk/${slug}`, isPreview)
       };
     }
 
     case PageContentTypes.LandingPage: {
       return {
-        href: withPreviewParam(`/[locale]/[slug]`, isPreview),
-        as: withPreviewParam(`/${locale}/${slug}`, isPreview),
+        href: withPreviewParam(`/[slug]`, isPreview),
+        as: withPreviewParam(`/${slug}`, isPreview)
       };
     }
 
     case PageContentTypes.BlogCategory: {
       return {
-        href: withPreviewParam(`/[locale]/blog/[slug]`, isPreview),
-        as: withPreviewParam(`/${locale}/blog/${slug}`, isPreview),
+        href: withPreviewParam(`/blog/[slug]`, isPreview),
+        as: withPreviewParam(`/blog/${slug}`, isPreview)
       };
     }
 
@@ -50,17 +48,17 @@ function normalizePath(path: string) {
 
 export function useNavigation() {
   const { query, asPath: currentPath, route } = useRouter();
-  const locale = useLocaleContext();
-  const isPreview = isPreviewEnabled(query);
+  const isPreview = isPreviewEnabled(query);  
 
   const linkTo = (page: TypePage) => {
-    return linkToPage(locale, page, isPreview);
+    return linkToPage(page, isPreview);
   };
 
   const linkToPath = (url: string): LinkProps => {
+
     return {
-      href: withPreviewParam(`/[locale]/${url}`, isPreview),
-      as: withPreviewParam(`/${locale}/${url}`, isPreview),
+      href: withPreviewParam(`${url}`, isPreview),
+      as: withPreviewParam(`${url}`, isPreview)
     };
   };
 
