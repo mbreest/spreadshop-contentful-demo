@@ -8,7 +8,6 @@ import { PageHead } from 'components/page-head';
 import { PageContentTypes } from 'lib/constants';
 import { TypePage, TypePageLandingpage } from 'lib/types';
 import { BlockRenderer } from 'components/renderer/block-renderer';
-import { withLocale } from 'lib/translations';
 
 type LandingProps = {
   page: TypePage;
@@ -23,15 +22,15 @@ export default function Landing({ page }: LandingProps) {
   const { hero, sections = [] } = content?.fields;
 
   return (
-    <div className="w-full pb-16 lg:pb-24">
-      <PageHead page={page} />
+    <div className="w-full pb-16 lg:pb-24">   
+      <PageHead page={page} />   
       <BlockRenderer block={hero} />
-      <BlockRenderer block={sections} />
+      <BlockRenderer block={sections} />        
     </div>
   );
 }
 
-export const getServerSideProps = withLocale(async (locale, { params, query }) => {
+export async function getServerSideProps({ params, query, locale }) {
   const slug = String(params.slug ?? 'homepage');
   const preview = isPreviewEnabled(query);
   const page = await getPage({
@@ -44,4 +43,4 @@ export const getServerSideProps = withLocale(async (locale, { params, query }) =
   return {
     props: { page },
   };
-});
+}

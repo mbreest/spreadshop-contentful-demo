@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Contentful from 'contentful';
+import { isAbsolute } from 'path';
 
 type BackgroundProps = {
   
@@ -19,10 +20,11 @@ export const Background = ({ background, image, imageOverlay, imageIllustration,
     backgroundSize: "cover",
     backgroundColor: background == "White" ? 'white' : background == "Light" ? "#F2F2F2" : "dark"
   }
-    
+
+  
   return (
-    <div className="bg-white mx-auto max-w-screen-xl" style={styling}>
-        {children}
+    <div className="mx-auto max-w-screen-xl px-6 py-10 bg-right" style={styling}>
+      {children}
     </div>
   )
 };
