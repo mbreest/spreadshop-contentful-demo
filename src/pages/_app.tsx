@@ -13,10 +13,8 @@ function SpreadshopApp({ Component, pageProps }) {
     <LocaleContext.Provider value={locale}>
       <div className="flex flex-col bg-white">
         <Head>
-          <link rel="shortcut icon" href="/favicon/favicon.png" type="image/png" />
-          <link rel="apple-touch-icon" href="/favicon/apple-icon-57x57.png" type="image/png" />
-          <link rel="apple-touch-icon" href="/favicon/apple-icon-72x72.png" type="image/png" />
-          <link rel="apple-touch-icon" href="/favicon/apple-icon-114x114.png" type="image/png" />
+          <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/ico" />
+          <link rel="apple-touch-icon" href="/favicon/spreadshop-favicon.png" type="image/png" />          
           <meta
             name="description"
             content={`Demo Help Center built using Next.js and Contentful Compose.`}
