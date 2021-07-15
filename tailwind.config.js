@@ -1,10 +1,18 @@
 module.exports = {
   purge: ['./src/components/**/*.{js,tsx,ts}', './src/pages/**/*.{js,tsx,ts}'],
   theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+        body: ['Roboto', 'sans-serif'],
+        mono: ['Montserratt', 'sans-serif'],
+      },
+    },
     typography: (theme) => ({
       default: {
         css: {
           h1: {
+            fontFamily: 'Montserrat',
             color: theme('colors.gray.800'),
             fontWeight: theme('fontWeight.medium'),
             fontSize: theme('fontSize.3xl'),
