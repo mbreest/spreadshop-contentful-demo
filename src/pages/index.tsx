@@ -22,7 +22,7 @@ export default function Landing({ page }: LandingProps) {
   const { hero, sections = [] } = content?.fields;
 
   return (
-    <div className="w-full pb-16 lg:pb-24">   
+    <div className="w-full pb-16">   
       <PageHead page={page} />   
       <BlockRenderer block={hero} />
       <BlockRenderer block={sections} />        

@@ -10,7 +10,7 @@ export const Banner = ({ fields }: TypeBanner) => {
     <Background {...background.fields}>
       <div className="mx-auto flex h-80 items-center">      
         <div className="w-full grid justify-items-center">        
-          <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
+          <h2 className="h0 pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h2>
           <div className="text-lg text-gray-700 py-6">{details}</div>
           <Cta {...{cta}}/>  
         </div>

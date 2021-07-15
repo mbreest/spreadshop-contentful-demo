@@ -20,11 +20,12 @@ export const Background = ({ background, image, imageOverlay, imageIllustration,
     backgroundSize: "cover",
     backgroundColor: background == "White" ? 'white' : background == "Light" ? "#F2F2F2" : "dark"
   }
-
   
   return (
-    <div className="mx-auto max-w-screen-xl px-6 py-10 bg-right" style={styling}>
-      {children}
+    <div style={styling}>
+      <div className="sprd-container mx-auto py-9 h-full">
+        {children}
+      </div>
     </div>
   )
 };

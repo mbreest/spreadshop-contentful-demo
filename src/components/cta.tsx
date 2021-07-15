@@ -15,19 +15,30 @@ export const Cta = ({cta}: CtaProps) => {
         linkProps = { page: cta.fields.buttonTarget };
       }
     }
+  const buttonStyling = {
+    fontWeight: 'bold',
+    padding: '1rem 3rem',
+    borderRadius: '2px',
+    display: 'inline-block',
+    lineHeight: 1,
+    cursor: 'pointer',
+    textDecoration: 'none',
+    letterSpacing: '0.05rem'
+  
+    }
 
   return (
     <>
         {linkProps && cta.fields.buttonType == "Primary" && (
             <Link {...linkProps}>
-              <a className="w-auto bg-yellow-600 text-white font-semibold  px-3 py-2 text-center">
+              <a className="w-auto bg-yellow-600 hover:bg-yellow-500 text-white text-center" style={buttonStyling}>
                 {cta.fields.buttonLabel}
               </a>
             </Link>
           )}
         {linkProps && cta.fields.buttonType == "Ghost" && (
             <Link {...linkProps}>
-              <a className="w-auto bg-white text-gray-700 border-2 border-gray-700 font-semibold  px-3 py-2 text-center">
+              <a className="w-auto bg-white text-gray-700 border-2 border-gray-700 text-center" style={buttonStyling}>
                 {cta.fields.buttonLabel}
               </a>
             </Link>

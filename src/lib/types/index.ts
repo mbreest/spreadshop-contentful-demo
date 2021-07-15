@@ -13,6 +13,7 @@ export type { TypeHeroImage, TypeHeroImageFields } from "./TypeHeroImage";
 export type { TypeLinkTo, TypeLinkToFields } from "./TypeLinkTo";
 export type { TypePage, TypePageFields } from "./TypePage";
 export type { TypePageBlogCategory, TypePageBlogCategoryFields } from "./TypePageBlogCategory";
+export type { TypePageBlogPost, TypePageBlogPostFields } from "./TypePageBlogPost";
 export type { TypePageHelpdeskArticle, TypePageHelpdeskArticleFields } from "./TypePageHelpdeskArticle";
 export type { TypePageLandingpage, TypePageLandingpageFields } from "./TypePageLandingpage";
 export type { TypeQuote, TypeQuoteFields } from "./TypeQuote";

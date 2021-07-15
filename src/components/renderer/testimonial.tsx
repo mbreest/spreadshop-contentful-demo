@@ -11,7 +11,7 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
     <Background {...background.fields}>
       <div className="w-full flex flex-col grid justify-items-center">
         <div className="w-full grid justify-items-center">        
-          <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
+          <h2 className="h0 pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h2>
         </div>
 
         <div className="pt-4 flex flex-row flex-nowrap justify-start overflow-x-scroll">        

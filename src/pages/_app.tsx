@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import 'styles/index.css';
+import 'styles/general/styles.css';
 import { PreviewBanner } from 'components/preview-banner';
 import { TopNavigation } from 'components/top-navigation';
 import { LocaleContext } from 'lib/translations';

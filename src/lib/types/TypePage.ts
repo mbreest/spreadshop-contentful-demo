@@ -1,5 +1,6 @@
 import * as Contentful from "contentful";
 import { TypePageBlogCategoryFields } from "./TypePageBlogCategory";
+import { TypePageBlogPostFields } from "./TypePageBlogPost";
 import { TypePageHelpdeskArticleFields } from "./TypePageHelpdeskArticle";
 import { TypePageLandingpageFields } from "./TypePageLandingpage";
 import { TypeSeoFields } from "./TypeSeo";
@@ -9,7 +10,7 @@ export interface TypePageFields {
     title: Contentful.EntryFields.Symbol;
     slug: Contentful.EntryFields.Symbol;
     seo?: Contentful.Entry<TypeSeoFields>;
-    content: Contentful.Entry<TypePageLandingpageFields | TypePageHelpdeskArticleFields | TypePageBlogCategoryFields>;
+    content: Contentful.Entry<TypePageBlogCategoryFields | TypePageBlogPostFields | TypePageHelpdeskArticleFields | TypePageLandingpageFields>;
 }
 
 export type TypePage = Contentful.Entry<TypePageFields>;

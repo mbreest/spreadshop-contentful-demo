@@ -12,7 +12,7 @@ export const UspList = ({ fields }: TypeUspList) => {
     <Background {...background.fields}>
       <div className="w-full flex flex-col">
         <div className="w-full grid justify-items-center p-8">
-          <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
+          <h2 className="h0 pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h2>
           <div className="leading-relaxed text-lg text-gray-700 py-6">{details}</div>
         </div>   
         <div className="flex flex-row flex-wrap justify-center">
