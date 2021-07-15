@@ -45,15 +45,16 @@ export async function getPage(params: GetPageParams) {
 type GetPagesOfTypeParams = {
   locale: Locale;
   pageContentType: string;
+  limit: number;
   preview?: boolean;
 };
 
 export async function getPagesOfType(params: GetPagesOfTypeParams) {
-  const { pageContentType, preview, locale } = params;
+  const { pageContentType, preview, locale, limit } = params;
   const client = getClient(preview);
 
   const { items: pages } = await client.getEntries({
-    limit: 100,
+    limit: limit,
     locale,
     content_type: PageContentType,
     'fields.content.sys.contentType.sys.id': pageContentType,
