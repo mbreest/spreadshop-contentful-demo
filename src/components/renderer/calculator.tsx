@@ -20,11 +20,14 @@ export const Calculator = ({ fields }: TypeCalculator) => {
         </div>
         <div className="flex flex-col md:flex-row p-4">
           <div className="leading-relaxed text-lg text-gray-700 md:w-1/2 pr-8">{textComp}</div>
-          <div className="leading-relaxed text-lg text-gray-700 md:w-1/2">{details}</div>
+          <div className="calculator__container md:w-1/2">
+            <div className="leading-relaxed text-lg text-gray-700 mb-4">{details}</div>
+            <img src="/image/calculator_placeholder.png" alt="Placeholder" />
+          </div>
         </div>
         <div className="flex w-full justify-center pt-8 pb-8">
-          <Cta {...{cta}}/>
-        </div>              
+          <Cta {...{ cta }} />
+        </div>
       </div>
     </Background>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import 'styles/general/styles.css';
+import 'styles/index.css';
 import { PreviewBanner } from 'components/preview-banner';
 import { TopNavigation } from 'components/top-navigation';
 import { LocaleContext } from 'lib/translations';
@@ -14,7 +14,7 @@ function SpreadshopApp({ Component, pageProps }) {
       <div className="flex flex-col bg-white">
         <Head>
           <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/ico" />
-          <link rel="apple-touch-icon" href="/favicon/spreadshop-favicon.png" type="image/png" />          
+          <link rel="apple-touch-icon" href="/favicon/spreadshop-favicon.png" type="image/png" />
           <meta
             name="description"
             content={`Demo Help Center built using Next.js and Contentful Compose.`}

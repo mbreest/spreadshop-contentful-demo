@@ -12,7 +12,6 @@ module.exports = {
       default: {
         css: {
           h1: {
-            fontFamily: 'Montserrat',
             color: theme('colors.gray.800'),
             fontWeight: theme('fontWeight.medium'),
             fontSize: theme('fontSize.3xl'),
