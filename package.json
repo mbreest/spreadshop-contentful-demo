@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next",
     "build": "next build",
+    "build:css": "tailwind build -i src/styles/tailwind.css -o src/styles/general/styles.css",
+    "postcss": "postcss src/styles/tailwind.css -o src/styles/general/styles.css",
     "start": "next start",
     "export": "next export",
     "lint": "eslint . --ext '.ts,.tsx,.js,.jsx'",
@@ -35,6 +37,7 @@
     "@types/react": "^16.14.0",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
+    "autoprefixer": "^10.3.1",
     "cf-content-types-generator": "^1.5.2",
     "dotenv": "8.2.0",
     "eslint": "^7.0.0",
@@ -47,9 +50,10 @@
     "esm": "^3.2.25",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
+    "postcss": "^8.3.5",
     "postcss-preset-env": "^6.7.0",
-    "postcss": "^8.0.0",
     "prettier": "^2.2.1",
+    "sass": "^1.35.2",
     "tailwindcss": "^2.2.4",
     "ts-node": "^9.1.1",
     "typescript": "^3.9.9"
