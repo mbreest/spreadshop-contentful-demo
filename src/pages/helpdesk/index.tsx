@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import React from 'react';
-import ErrorPage from 'next/error';
 
-import { getPage, getPagesOfType } from 'lib/api';
+import { getPagesOfType } from 'lib/api';
 import { isPreviewEnabled } from 'lib/preview';
-import { PageHead } from 'components/page-head';
 import { PageContentTypes } from 'lib/constants';
-import { TypePage, TypePageLandingpage } from 'lib/types';
-import { BlockRenderer } from 'components/renderer/block-renderer';
+import { TypePage } from 'lib/types';
 import { Link } from 'components/link';
 
 type HelpdeskProps = {
