@@ -34,11 +34,11 @@ export const Carousel = ({ fields }: TypeCarousel) => {
             })}
           </>
         )}
-        <Tabs>
-          {categories.length > 1 &&
-            categories.map(function (category, idx) {
+        {categories.length > 1 && (
+          <Tabs>
+            {categories.map(function (category, idx) {
               return (
-                <Tab title={category.fields.title} selected="false" key={'category-' + idx}>
+                <Tab title={category.fields.title} selected="false" key={'tab-' + idx}>
                   <div className="flex flex-row flex-wrap w-full">
                     {category.fields.illustrations.map(function (illustration, idx1) {
                       return (
@@ -53,7 +53,8 @@ export const Carousel = ({ fields }: TypeCarousel) => {
                 </Tab>
               );
             })}
-        </Tabs>
+          </Tabs>
+        )}
       </div>
       <div className="flex w-full justify-center pt-8 pb-8">
         <Cta {...{ cta }} />
