@@ -6,32 +6,46 @@ import { isPreviewEnabled, withPreviewParam } from './preview';
 
 export interface LinkProps {
   href: string;
-  as: string;  
+  as: string;
 }
 
 function linkToPage(page: TypePage, isPreview: boolean): LinkProps {
   const slug = page.fields.slug;
-  const pageType = page.fields.content?.sys.contentType.sys.id;  
+  const pageType = page.fields.content?.sys.contentType.sys.id;
 
   switch (pageType) {
     case PageContentTypes.HelpDeskArticle: {
       return {
         href: withPreviewParam('/helpdesk/[slug]', isPreview),
-        as: withPreviewParam(`/helpdesk/${slug}`, isPreview)
+        as: withPreviewParam(`/helpdesk/${slug}`, isPreview),
       };
     }
 
     case PageContentTypes.LandingPage: {
-      return {
-        href: withPreviewParam(`/[slug]`, isPreview),
-        as: withPreviewParam(`/${slug}`, isPreview)
-      };
+      if (slug == 'blog') {
+        return {
+          href: withPreviewParam(`/blog`, isPreview),
+          as: withPreviewParam(`/blog`, isPreview),
+        };
+      } else {
+        return {
+          href: withPreviewParam(`/[slug]`, isPreview),
+          as: withPreviewParam(`/${slug}`, isPreview),
+        };
+      }
     }
 
     case PageContentTypes.BlogCategory: {
       return {
+        href: withPreviewParam(`/blog/category/[slug]`, isPreview),
+        as: withPreviewParam(`/blog/category/${slug}`, isPreview),
+      };
+    }
+
+    case PageContentTypes.BlogPost: {
+      return {
         href: withPreviewParam(`/blog/[slug]`, isPreview),
-        as: withPreviewParam(`/blog/${slug}`, isPreview)
+        as: withPreviewParam(`/blog/${slug}`, isPreview),
       };
     }
 
@@ -48,17 +62,16 @@ function normalizePath(path: string) {
 
 export function useNavigation() {
   const { query, asPath: currentPath, route } = useRouter();
-  const isPreview = isPreviewEnabled(query);  
+  const isPreview = isPreviewEnabled(query);
 
   const linkTo = (page: TypePage) => {
     return linkToPage(page, isPreview);
   };
 
   const linkToPath = (url: string): LinkProps => {
-
     return {
       href: withPreviewParam(`${url}`, isPreview),
-      as: withPreviewParam(`${url}`, isPreview)
+      as: withPreviewParam(`${url}`, isPreview),
     };
   };
 

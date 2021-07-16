@@ -2,7 +2,7 @@ export const SITE_NAME = 'Spreadshop';
 
 export const PageContentType = 'page';
 
-export const ComponentContentTypes = {  
+export const ComponentContentTypes = {
   Hero: 'heroImage',
   FeaturedUSP: 'featuredUsp',
   Carousel: 'carousel',
@@ -12,14 +12,14 @@ export const ComponentContentTypes = {
   USPList: 'uspList',
   Calculator: 'calculator',
   BlogRoll: 'blogRoll',
-  Faq: 'faq'
+  Faq: 'faq',
 };
 
 export const PageContentTypes = {
   HelpDeskArticle: 'pageHelpdeskArticle',
   LandingPage: 'pageLandingpage',
-  BlogCategory: 'pageBlogCategory'
-
+  BlogCategory: 'pageBlogCategory',
+  BlogPost: 'pageBlogPost',
 };
 
 export const fallbackImage = {
