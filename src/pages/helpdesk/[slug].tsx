@@ -28,7 +28,7 @@ export default function HelpdeskArticle({ page }: HelpdeskArticleProps) {
         <div className="h0 pt-4 text-3xl font-medium leading-tight text-gray-900">
           {page.fields.title}
         </div>
-        <div className="leading-relaxed text-lg text-gray-700 md:w-1/2 pt-8">{textComp}</div>
+        <div className="leading-relaxed text-lg text-gray-700 pt-8">{textComp}</div>
       </div>
     </div>
   );
