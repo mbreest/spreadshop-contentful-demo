@@ -17,7 +17,7 @@ function SpreadshopApp({ Component, pageProps }) {
           <link rel="apple-touch-icon" href="/favicon/spreadshop-favicon.png" type="image/png" />
           <meta
             name="description"
-            content={`Demo Help Center built using Next.js and Contentful Compose.`}
+            content={`Spreadshop Contentful Website Demo`}
             key="description"
           />
         </Head>
