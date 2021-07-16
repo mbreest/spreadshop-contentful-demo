@@ -7,7 +7,6 @@ import { isPreviewEnabled } from 'lib/preview';
 import { PageHead } from 'components/page-head';
 import { PageContentTypes } from 'lib/constants';
 import { TypePage, TypePageHelpdeskArticle, TypePageLandingpage } from 'lib/types';
-import { BlockRenderer } from 'components/renderer/block-renderer';
 import { isRichText, renderRichText } from 'lib/rich-text';
 
 type HelpdeskArticleProps = {
