@@ -22,7 +22,9 @@ export const Calculator = ({ fields }: TypeCalculator) => {
           <div className="leading-relaxed text-lg text-gray-700 md:w-1/2 pr-8">{textComp}</div>
           <div className="calculator__container md:w-1/2">
             <div className="leading-relaxed text-lg text-gray-700 mb-4">{details}</div>
-            <img src="/image/calculator_placeholder.png" alt="Placeholder" />
+            <a href="https://youtu.be/bFEoMO0pc7k?t=8" target="_blank" rel="noreferrer">
+              <img src="/image/calculator_placeholder.png" alt="Placeholder" />
+            </a>
           </div>
         </div>
         <div className="flex w-full justify-center pt-8 pb-8">
