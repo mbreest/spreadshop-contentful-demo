@@ -22,16 +22,16 @@ export default function Landing({ page }: LandingProps) {
   const { hero, sections = [] } = content?.fields;
 
   return (
-    <div className="w-full pb-16">   
-      <PageHead page={page} />   
+    <div className="w-full pb-16">
+      <PageHead page={page} />
       <BlockRenderer block={hero} />
-      <BlockRenderer block={sections} />        
+      <BlockRenderer block={sections} />
     </div>
   );
 }
 
 export async function getServerSideProps({ params, query, locale }) {
-  const slug = String(params.slug ?? 'homepage');
+  const slug = params && params.slug ? String(params.slug) : 'homepage';
   const preview = isPreviewEnabled(query);
   const page = await getPage({
     slug,
