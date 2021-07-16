@@ -80,7 +80,7 @@ export async function getBlogPosts(params: GetBlogPostTypeParams) {
     locale,
     content_type: 'page',
     'fields.content.sys.contentType.sys.id': 'pageBlogPost',
-    'fields.content.fields.category.sys.id': '6o3U2zZxQzH0pUsO88n71t',
+    'fields.content.fields.category.sys.id': categoryId,
     order: 'sys.createdAt',
   });
 

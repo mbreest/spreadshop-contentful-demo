@@ -50,7 +50,7 @@ export async function getServerSideProps({ params, query, locale }) {
         locale,
         limit: 3,
         preview,
-        categoryId: blogRoll.sys.id,
+        categoryId: blogRoll.fields.category.sys.id,
       });
       blogRoll.fields.topPosts = pages;
     }
