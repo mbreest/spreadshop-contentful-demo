@@ -58,6 +58,30 @@ export async function getPagesOfType(params: GetPagesOfTypeParams) {
     locale,
     content_type: PageContentType,
     'fields.content.sys.contentType.sys.id': pageContentType,
+    order: 'sys.createdAt',
+  });
+
+  return pages ? pages.map((page) => parsePage(page)) : [];
+}
+
+type GetBlogPostTypeParams = {
+  locale: Locale;
+  limit: number;
+  preview?: boolean;
+  categoryId: string;
+};
+
+export async function getBlogPosts(params: GetBlogPostTypeParams) {
+  const { preview, locale, limit, categoryId } = params;
+  const client = getClient(preview);
+
+  const { items: pages } = await client.getEntries({
+    limit: limit,
+    locale,
+    content_type: 'page',
+    'fields.content.sys.contentType.sys.id': 'pageBlogPost',
+    'fields.content.fields.category.sys.id': '6o3U2zZxQzH0pUsO88n71t',
+    order: 'sys.createdAt',
   });
 
   return pages ? pages.map((page) => parsePage(page)) : [];
