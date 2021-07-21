@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import 'styles/index.css';
+import 'swiper/swiper.min.css';
 import { PreviewBanner } from 'components/preview-banner';
 import { TopNavigation } from 'components/top-navigation';
 import { LocaleContext } from 'lib/translations';

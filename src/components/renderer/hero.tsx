@@ -1,5 +1,5 @@
 import { TypeHeroImage } from 'lib/types';
-import { Background } from 'components/background';
+import { Background } from 'components/Section/background';
 import { Cta } from 'components/cta';
 
 export const Hero = ({ fields }: TypeHeroImage) => {
@@ -12,9 +12,7 @@ export const Hero = ({ fields }: TypeHeroImage) => {
           <h1 className="h0 pt-4 text-4xl font-medium leading-tight text-gray-900 lg:w-7/12">
             {title}
           </h1>
-          <div className="leading-relaxed text-lg text-gray-700 md:py-6 invisible md:visible">
-            {details}
-          </div>
+          <div className="leading-relaxed text-lg text-gray-700 py-6">{details}</div>
           <Cta {...{ cta }} />
         </div>
       </div>

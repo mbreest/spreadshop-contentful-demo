@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { TypeBanner } from 'lib/types';
-import { Background } from 'components/background';
+import { Background } from 'components/Section/background';
 import { Cta } from 'components/cta';
 
 export const Banner = ({ fields }: TypeBanner) => {
@@ -8,13 +8,13 @@ export const Banner = ({ fields }: TypeBanner) => {
 
   return (
     <Background {...background.fields}>
-      <div className="mx-auto flex h-80 items-center">      
-        <div className="w-full grid justify-items-center">        
+      <div className="mx-auto flex h-80 items-center">
+        <div className="w-full grid justify-items-center">
           <h2 className="h0 pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h2>
           <div className="text-lg text-gray-700 py-6">{details}</div>
-          <Cta {...{cta}}/>  
+          <Cta {...{ cta }} />
         </div>
-      </div>      
+      </div>
     </Background>
   );
 };

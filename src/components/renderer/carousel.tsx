@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { TypeCarousel } from 'lib/types';
-import { Background } from 'components/background';
+import { Background } from 'components/Section/background';
 import { Cta } from 'components/cta';
 import { Tab, Tabs } from 'components/tabs';
 

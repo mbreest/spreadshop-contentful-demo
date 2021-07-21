@@ -2,7 +2,7 @@
 import { Link } from 'components/link';
 
 import { TypeCalculator } from 'lib/types';
-import { Background } from 'components/background';
+import { Background } from 'components/Section/background';
 import { Cta } from 'components/cta';
 import { isRichText, renderRichText } from 'lib/rich-text';
 

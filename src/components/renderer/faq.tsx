@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { TypeFaq } from 'lib/types';
 import { Cta } from 'components/cta';
-import { Background } from 'components/background';
 import { isRichText, renderRichText } from 'lib/rich-text';
 import { Accordion, AccordionItem, AccordionPanel } from 'components/accordion';
+import { Background } from 'components/Section/background';
 
 export const Faq = ({ fields }: TypeFaq) => {
   const { title, background, entries, questions, questionDetails, questionCta1, questionCta2 } =
