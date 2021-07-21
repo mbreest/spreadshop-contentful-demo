@@ -16,7 +16,7 @@ export function Accordion({ children }) {
 const useAccordion = () => React.useContext(Context);
 const style = {
   item: `block focus:outline-none bg-white border mx-4 my-1 p-4 font-bold`,
-  panel: `overflow-x-scroll md:overflow-x-hidden border mx-4 transition-height ease duration-300`,
+  panel: `overflow-x-hidden border mx-4 transition-height ease duration-300`,
 };
 export function AccordionItem({ toggle, children }) {
   const { selected, toggleItem } = useAccordion();
