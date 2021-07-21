@@ -1,5 +1,4 @@
 import React from 'react';
-import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Card from './Card';
 
