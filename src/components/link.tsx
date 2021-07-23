@@ -2,7 +2,6 @@ import React from 'react';
 import { TypePage } from 'lib/types';
 import NextLink from 'next/link';
 import { useNavigation } from 'lib/useNavigation';
-import { useRouter } from 'next/router';
 
 type LinkProps = {
   // one of them needs to be provided, RequireAtLeastOne from type-fest does not work properly

@@ -6,6 +6,7 @@ export const ComponentContentTypes = {
   Hero: 'heroImage',
   FeaturedUSP: 'featuredUsp',
   Carousel: 'carousel',
+  SkuCarousel: 'skuCarousel',
   Testimonial: 'testimonial',
   Banner: 'banner',
   SingleAsset: 'singleAsset',

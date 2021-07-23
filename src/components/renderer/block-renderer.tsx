@@ -13,6 +13,7 @@ import { UspList } from './uspList';
 import { Calculator } from './calculator';
 import { BlogRoll } from './blogRoll';
 import { Faq } from './faq';
+import { SkuCarousel } from './skuCarousel';
 
 type BlockRendererProps = {
   block: any;
@@ -47,9 +48,8 @@ const BlockRenderer = ({ block }: BlockRendererProps) => {
   return <Component key={`${contentTypeId}-${id}`} {...componentProps} />;
 };
 
-const fromPage = (fieldName: string) => (parent: Entry<unknown>) => (
-  <BlockRenderer block={{ ...parent?.fields[fieldName], parent }} />
-);
+const fromPage = (fieldName: string) => (parent: Entry<unknown>) =>
+  <BlockRenderer block={{ ...parent?.fields[fieldName], parent }} />;
 
 const ContentTypeMap = {
   [ComponentContentTypes.Hero]: Hero,
@@ -62,7 +62,8 @@ const ContentTypeMap = {
   [ComponentContentTypes.Calculator]: Calculator,
   [ComponentContentTypes.BlogRoll]: BlogRoll,
   [ComponentContentTypes.Faq]: Faq,
-  [PageContentType]: fromPage('content')
+  [ComponentContentTypes.SkuCarousel]: SkuCarousel,
+  [PageContentType]: fromPage('content'),
 };
 
 export { BlockRenderer };

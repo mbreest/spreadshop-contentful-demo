@@ -2,7 +2,7 @@
 import React from 'react';
 import ErrorPage from 'next/error';
 
-import { getPage, getPagesOfType, getBlogPosts } from 'lib/api';
+import { getPage, getBlogPosts } from 'lib/api';
 import { isPreviewEnabled } from 'lib/preview';
 import { PageHead } from 'components/page-head';
 import { PageContentTypes } from 'lib/constants';

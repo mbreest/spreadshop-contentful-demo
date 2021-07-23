@@ -4,6 +4,8 @@ import { parsePage } from './pageParsers';
 import { PageContentType } from './constants';
 import { Locale } from './translations';
 
+import { Product, Color } from './customtypes';
+
 const client = createClient({
   space: process.env.CF_SPACE_ID,
   accessToken: process.env.CF_DELIVERY_ACCESS_TOKEN,
@@ -85,4 +87,74 @@ export async function getBlogPosts(params: GetBlogPostTypeParams) {
   });
 
   return pages ? pages.map((page) => parsePage(page)) : [];
+}
+
+const LANGUAGE_TO_LOCALE = {
+  de: 'de_DE',
+  en: 'en_GB',
+};
+
+const shopId = process.env.SPRD_SHOP_ID;
+const apiKey = process.env.SPRD_API_KEY;
+const apiBase = process.env.SPRD_API_BASE;
+const imageBase = process.env.SPRD_IMAGE_BASE;
+
+type GetProductParams = {
+  id: string;
+  locale: string;
+};
+
+export async function getProduct(params: GetProductParams) {
+  const { id, locale } = params;
+
+  let product = null;
+  const response = await fetch(
+    `${apiBase}/api/v1/shops/${shopId}/productTypes/${id}?mediaType=json&apiKey=${apiKey}&locale=${LANGUAGE_TO_LOCALE[locale]}`
+  );
+  if (response.status == 200) {
+    const data = await response.json();
+
+    product = {
+      id: id,
+      name: data['name'],
+      description: data['description'],
+      defaultViewId: data['defaultValues']['defaultView']['id'],
+      defaultAppearanceId: data['defaultValues']['defaultAppearance']['id'],
+      sizes: data['sizes'].map((s) => s['name']),
+      views: data['views'].map((v) => v['id']),
+      colors: data['appearances'].map((a) => {
+        const color = {
+          id: a['id'],
+          name: a['name'],
+          hex: a['colors'].filter((c) => c['index'] == 0)[0]['value'],
+          texture: a['texture'],
+        } as Color;
+        return color;
+      }),
+    } as Product;
+  }
+
+  return product;
+}
+
+type GetProductTypeImageParams = {
+  id: string;
+  appearance: string;
+  view: string;
+  size: string;
+};
+
+export function getProductTypeImageUrl(params: GetProductTypeImageParams) {
+  const { id, appearance, view, size } = params;
+  return `${imageBase}/image-server/v1/productTypes/${id}/views/${view}/appearances/${appearance},width=${size}.png`;
+}
+
+type GetAppearanceImageParams = {
+  id: string;
+  size: string;
+};
+
+export function getAppearanceImageUrl(params: GetAppearanceImageParams) {
+  const { id, size } = params;
+  return `${imageBase}/image-server/v1/appearances/${id},width=${size}.png`;
 }
