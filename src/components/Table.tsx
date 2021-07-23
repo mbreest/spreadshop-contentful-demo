@@ -2,7 +2,7 @@ import React from 'react';
 
 const Table = ({ tableData }) => {
   return (
-    <div className="w-full overflow-x-scroll">
+    <div className="w-full overflow-x-scroll ">
       <table className="border border-gray-300 p-2 mt-3 mb-3">
         <tr>
           {tableData &&
