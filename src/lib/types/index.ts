@@ -20,8 +20,8 @@ export type {
   TypePageHelpdeskArticleFields,
 } from './TypePageHelpdeskArticle';
 export type { TypePageLandingpage, TypePageLandingpageFields } from './TypePageLandingpage';
+export type { TypePageProduct, TypePageProductFields } from './TypePageProduct';
 export type { TypeQuote, TypeQuoteFields } from './TypeQuote';
-export type { TypeSectionBackground, TypeSectionBackgroundFields } from './TypeSectionBackground';
 export type { TypeSeo, TypeSeoFields } from './TypeSeo';
 export type { TypeSingleAsset, TypeSingleAssetFields } from './TypeSingleAsset';
 export type { TypeSkuCarousel, TypeSkuCarouselFields } from './TypeSkuCarousel';

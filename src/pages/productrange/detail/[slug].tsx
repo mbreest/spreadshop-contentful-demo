@@ -6,22 +6,33 @@ import { isPreviewEnabled } from 'lib/preview';
 import ErrorPage from 'next/error';
 import { Background } from 'components/Section/background';
 
-import { getProduct, getProductTypeImageUrl, getAppearanceImageUrl } from 'lib/api';
-
+import { getProduct, getProductTypeImageUrl, getAppearanceImageUrl, getPage } from 'lib/api';
+import { TypePage, TypePageProduct } from 'lib/types';
 import { Product } from 'lib/customtypes';
+
+import { PageContentTypes } from 'lib/constants';
+import { BlockRenderer } from 'components/renderer/block-renderer';
 
 type ProductRangeDetailProps = {
   product: Product;
+  page: TypePage;
 };
 
-export default function ProductRangeDetail({ product }: ProductRangeDetailProps) {
+export default function ProductRangeDetail({ product, page }: ProductRangeDetailProps) {
   if (!product) {
     return <ErrorPage statusCode={404} />;
   }
 
+  const content = page ? (page.fields.content as TypePageProduct) : null;
+  const bg =
+    content && content?.fields.background
+      ? ({ ...content?.fields.background.fields } as const)
+      : ({ background: 'Light', image: false, imageOverlay: false } as const);
+  const testimonial = content && content?.fields.testimonial ? content?.fields.testimonial : null;
+
   return (
     <div className="w-full pb-16">
-      <Background {...{ background: 'Light', image: false, imageOverlay: false }}>
+      <Background {...bg}>
         <div className="flex flex-col md:flex-row p-2 md:p-0">
           <div className="flex flex-col md:visible invisible h-0 md:h-auto">
             {product.views.map(function (viewId, idx) {
@@ -90,6 +101,7 @@ export default function ProductRangeDetail({ product }: ProductRangeDetailProps)
           <div className="pt-4" dangerouslySetInnerHTML={{ __html: product.description }} />
         </div>
       </Background>
+      {testimonial && <BlockRenderer block={testimonial} />}
     </div>
   );
 }
@@ -98,12 +110,12 @@ export async function getServerSideProps({ params, query, locale }) {
   const id = String(params.slug ?? '');
   const preview = isPreviewEnabled(query);
 
-  const product = await getProduct({
-    id: id,
-    locale: locale,
-  });
+  const [product, page] = await Promise.all([
+    getProduct({ id: id, locale: locale }),
+    getPage({ slug: id, preview, locale, pageContentType: PageContentTypes.Product }),
+  ]);
 
   return {
-    props: { product },
+    props: { product, page },
   };
 }

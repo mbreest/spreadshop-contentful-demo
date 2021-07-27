@@ -10,8 +10,8 @@ export interface TypeBlogRollFields {
   details?: Contentful.EntryFields.Symbol;
   background: Contentful.Entry<TypeBackgroundFields>;
   category?: Contentful.Entry<TypePageBlogCategoryFields>;
-  topPosts?: TypePage[];
   cta?: Contentful.Entry<TypeCtaFields>;
+  topPosts?: TypePage[];
 }
 
 export type TypeBlogRoll = Contentful.Entry<TypeBlogRollFields>;

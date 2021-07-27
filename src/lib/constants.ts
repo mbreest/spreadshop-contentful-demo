@@ -21,6 +21,7 @@ export const PageContentTypes = {
   LandingPage: 'pageLandingpage',
   BlogCategory: 'pageBlogCategory',
   BlogPost: 'pageBlogPost',
+  Product: 'pageProduct',
 };
 
 export const fallbackImage = {
