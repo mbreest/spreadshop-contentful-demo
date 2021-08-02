@@ -1,18 +1,26 @@
 import React from 'react';
 import { TypeCta } from 'lib/types';
 import { Link } from 'components/link';
+import { useRouter } from 'next/router';
 
 type CtaProps = {
   cta?: TypeCta;
 };
 
 export const Cta = ({ cta }: CtaProps) => {
+  const { asPath: currentPath } = useRouter();
+
   let linkProps;
+
   if (cta) {
-    if ('url' in cta.fields.buttonTarget.fields) {
-      linkProps = { href: cta.fields.buttonTarget.fields.url };
-    } else if ('slug' in cta.fields.buttonTarget.fields) {
-      linkProps = { page: cta.fields.buttonTarget };
+    if (typeof cta.fields.buttonTarget === 'string') {
+      linkProps = { href: currentPath };
+    } else {
+      if ('url' in cta.fields.buttonTarget.fields) {
+        linkProps = { href: cta.fields.buttonTarget.fields.url };
+      } else if ('slug' in cta.fields.buttonTarget.fields) {
+        linkProps = { page: cta.fields.buttonTarget };
+      }
     }
   }
   const buttonStyling = {
