@@ -51,7 +51,7 @@ export const UspList = ({ fields }: TypeUspList) => {
               );
             })}
         </div>
-        <div>
+        <div className="flex w-full justify-center pt-8 pb-8">
           <Cta {...{ cta }} />
         </div>
       </div>
