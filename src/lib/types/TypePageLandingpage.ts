@@ -8,6 +8,7 @@ import { TypeFeaturedUspFields } from './TypeFeaturedUsp';
 import { TypeHeroImageFields } from './TypeHeroImage';
 import { TypeSingleAssetFields } from './TypeSingleAsset';
 import { TypeSkuCarouselFields } from './TypeSkuCarousel';
+import { TypeTablistFields } from './TypeTablist';
 import { TypeTestimonialFields } from './TypeTestimonial';
 import { TypeUspListFields } from './TypeUspList';
 
@@ -15,7 +16,6 @@ export interface TypePageLandingpageFields {
   name?: Contentful.EntryFields.Symbol;
   hero: Contentful.Entry<TypeHeroImageFields>;
   sections?: Contentful.Entry<
-    | TypeBannerFields
     | TypeBlogRollFields
     | TypeCalculatorFields
     | TypeCarouselFields
@@ -23,8 +23,10 @@ export interface TypePageLandingpageFields {
     | TypeFeaturedUspFields
     | TypeSingleAssetFields
     | TypeSkuCarouselFields
+    | TypeTablistFields
     | TypeTestimonialFields
     | TypeUspListFields
+    | TypeBannerFields
   >[];
 }
 

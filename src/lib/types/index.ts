@@ -1,3 +1,5 @@
+export type { TypeAssortment, TypeAssortmentFields } from './TypeAssortment';
+export type { TypeAssortmentPage, TypeAssortmentPageFields } from './TypeAssortmentPage';
 export type { TypeBackground, TypeBackgroundFields } from './TypeBackground';
 export type { TypeBanner, TypeBannerFields } from './TypeBanner';
 export type { TypeBlogPostTest, TypeBlogPostTestFields } from './TypeBlogPostTest';
@@ -11,6 +13,10 @@ export type { TypeFaq, TypeFaqFields } from './TypeFaq';
 export type { TypeFeaturedUsp, TypeFeaturedUspFields } from './TypeFeaturedUsp';
 export type { TypeFeaturedUspItem, TypeFeaturedUspItemFields } from './TypeFeaturedUspItem';
 export type { TypeHeroImage, TypeHeroImageFields } from './TypeHeroImage';
+export type {
+  TypeImageWithFocalPoint,
+  TypeImageWithFocalPointFields,
+} from './TypeImageWithFocalPoint';
 export type { TypeLinkTo, TypeLinkToFields } from './TypeLinkTo';
 export type { TypePage, TypePageFields } from './TypePage';
 export type { TypePageBlogCategory, TypePageBlogCategoryFields } from './TypePageBlogCategory';
@@ -25,6 +31,8 @@ export type { TypeQuote, TypeQuoteFields } from './TypeQuote';
 export type { TypeSeo, TypeSeoFields } from './TypeSeo';
 export type { TypeSingleAsset, TypeSingleAssetFields } from './TypeSingleAsset';
 export type { TypeSkuCarousel, TypeSkuCarouselFields } from './TypeSkuCarousel';
+export type { TypeTab, TypeTabFields } from './TypeTab';
 export type { TypeTable, TypeTableFields } from './TypeTable';
+export type { TypeTablist, TypeTablistFields } from './TypeTablist';
 export type { TypeTestimonial, TypeTestimonialFields } from './TypeTestimonial';
 export type { TypeUspList, TypeUspListFields } from './TypeUspList';

@@ -1,16 +1,18 @@
 import * as Contentful from 'contentful';
-import { TypeBackgroundFields } from './TypeBackground';
-import { TypeCtaFields } from './TypeCta';
+import { TypeExternalPageFields } from './TypeExternalPage';
+import { TypePageFields } from './TypePage';
 import { TypePageBlogCategoryFields } from './TypePageBlogCategory';
 import { TypePage } from './TypePage';
 
 export interface TypeBlogRollFields {
   anchor: Contentful.EntryFields.Symbol;
+  backgroundColor: 'White' | 'Light' | 'Dark';
   title: Contentful.EntryFields.Symbol;
   details?: Contentful.EntryFields.Symbol;
-  background: Contentful.Entry<TypeBackgroundFields>;
   category?: Contentful.Entry<TypePageBlogCategoryFields>;
-  cta?: Contentful.Entry<TypeCtaFields>;
+  ctaType?: 'Primary' | 'Ghost';
+  ctaLabel?: Contentful.EntryFields.Symbol;
+  ctaTarget?: Contentful.Entry<TypePageFields | TypeExternalPageFields>;
   topPosts?: TypePage[];
 }
 

@@ -1,14 +1,20 @@
 /* eslint-disable @typescript-eslint/camelcase */
+import * as Contentful from 'contentful';
 import { TypeTestimonial } from 'lib/types';
 import { Background } from 'components/Section/background';
 import { Cta } from 'components/cta';
 import { isRichText, renderRichText } from 'lib/rich-text';
 
 export const Testimonial = ({ fields }: TypeTestimonial) => {
-  const { title, background, showLogo, quotes, logos, cta } = fields;
+  const { title, backgroundColor, showLogo, quotes, logos, ctaType, ctaLabel, ctaTarget } = fields;
 
   return (
-    <Background {...background.fields}>
+    <Background
+      {...{
+        background: backgroundColor,
+        image: false as Contentful.EntryFields.Boolean,
+        imageOverlay: false as Contentful.EntryFields.Boolean,
+      }}>
       <div className="w-full flex flex-col grid justify-items-center">
         <div className="w-full grid justify-items-center">
           <h2 className="h0 pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h2>
@@ -60,7 +66,7 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
             })}
         </div>
         <div className="flex w-full justify-center pt-8 pb-8">
-          <Cta {...{ cta }} />
+          <Cta {...{ ctaType, ctaLabel, ctaTarget }} />
         </div>
       </div>
     </Background>
