@@ -25,19 +25,19 @@ export const UspList = ({ fields }: TypeUspList) => {
           {usps &&
             usps.map(function (usp, idx) {
               let linkProps1;
-              if (usp.fields.link) {
-                if ('url' in usp.fields.link.fields.target.fields) {
-                  linkProps1 = { href: usp.fields.link.fields.target.fields.url };
-                } else if ('slug' in usp.fields.link.fields.target.fields) {
-                  linkProps1 = { page: usp.fields.link.fields.target };
+              if (usp.fields.linkTarget) {
+                if ('url' in usp.fields.linkTarget.fields) {
+                  linkProps1 = { href: usp.fields.linkTarget.fields.url };
+                } else if ('slug' in usp.fields.linkTarget.fields) {
+                  linkProps1 = { page: usp.fields.linkTarget };
                 }
               }
 
               return (
                 <div key={'usplist-' + idx} className="w-60 pr-8 pt-4 grid justify-items-center">
-                  {usp.fields.illustration && (
+                  {usp.fields.illustrationNew && (
                     <div className="w-30 h-30">
-                      <img src={usp.fields.illustration[0].secure_url} className="max-h-28" />
+                      <img src={usp.fields.illustrationNew.fields.file.url} className="max-h-28" />
                     </div>
                   )}
                   <div className="grid justify-items-center">
