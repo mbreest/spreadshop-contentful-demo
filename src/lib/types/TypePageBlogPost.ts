@@ -5,7 +5,7 @@ import { TypePageBlogCategoryFields } from './TypePageBlogCategory';
 export interface TypePageBlogPostFields {
   name?: Contentful.EntryFields.Symbol;
   category: Contentful.Entry<TypePageBlogCategoryFields>;
-  illustration: Contentful.EntryFields.Object;
+  illustrationNew?: Contentful.Asset;
   text?: CFRichTextTypes.Block | CFRichTextTypes.Inline;
 }
 

@@ -29,7 +29,7 @@ export const BlogRoll = ({ fields }: TypeBlogRoll) => {
                 <div
                   key={'article-' + idx}
                   className="pl-4 pr-4 pb-4 flex-shrink-0 w-full md:w-1/3">
-                  <img src={content.fields.illustration[0].secure_url} />
+                  <img src={content.fields.illustrationNew.fields.file.url} />
                   <div className="font-bold">{page.fields.title}</div>
                   <Link {...{ page: page }}>
                     <a className="text-yellow-600 underline">Weiterlesen</a>

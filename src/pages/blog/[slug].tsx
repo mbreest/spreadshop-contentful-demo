@@ -26,7 +26,7 @@ export default function BlogPost({ page }: BlogPostProps) {
           <h1 className="h0 pt-4 text-3xl font-medium leading-tight text-gray-900">
             {page.fields.title}
           </h1>
-          <img src={content.fields.illustration[0].secure_url} className="pt-8" />
+          <img src={content.fields.illustrationNew.fields.file.url} className="pt-8" />
           <div className="pt-8">{textComp}</div>
         </div>
       </div>

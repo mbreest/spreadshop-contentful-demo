@@ -28,10 +28,10 @@ export const Carousel = ({ fields }: TypeCarousel) => {
                 <div
                   key={'category-' + idx}
                   className="pt-4 flex flex-row flex-nowrap justify-start overflow-x-scroll">
-                  {category.fields.illustrations.map(function (illustration, idx1) {
+                  {category.fields.illustrationsNew.map(function (illustration, idx1) {
                     return (
                       <div key={'category-' + idx} className="flex flex-shrink-0 w-60 p-2">
-                        <img key={idx1} src={illustration.secure_url} />
+                        <img key={idx1} src={illustration.fields.file.url} />
                       </div>
                     );
                   })}
@@ -46,12 +46,12 @@ export const Carousel = ({ fields }: TypeCarousel) => {
               return (
                 <Tab title={category.fields.title} selected="false" key={'tab-' + idx}>
                   <div className="flex flex-row flex-wrap w-full">
-                    {category.fields.illustrations.map(function (illustration, idx1) {
+                    {category.fields.illustrationsNew.map(function (illustration, idx1) {
                       return (
                         <div
                           key={'category-' + idx}
                           className="flex-shrink-0 w-1/2 md:w-1/4 md:pr-4 pb-4">
-                          <img key={idx1} src={illustration.secure_url} />
+                          <img key={idx1} src={illustration.fields.file.url} />
                         </div>
                       );
                     })}

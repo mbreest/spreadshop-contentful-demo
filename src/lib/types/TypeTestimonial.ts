@@ -10,7 +10,7 @@ export interface TypeTestimonialFields {
   detail?: Contentful.EntryFields.Symbol;
   quotes?: Contentful.Entry<TypeQuoteFields>[];
   showLogo: Contentful.EntryFields.Boolean;
-  logos?: Contentful.EntryFields.Object;
+  logosNew?: Contentful.Asset[];
   ctaType?: 'Primary' | 'Ghost';
   ctaLabel?: Contentful.EntryFields.Symbol;
   ctaTarget?: Contentful.Entry<TypePageFields | TypeExternalPageFields>;

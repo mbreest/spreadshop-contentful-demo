@@ -1,5 +1,5 @@
 import React from 'react';
-import { TypeCta, TypeExternalPageFields, TypePageFields } from 'lib/types';
+import { TypeExternalPageFields, TypePageFields } from 'lib/types';
 import { Link } from 'components/link';
 import { useRouter } from 'next/router';
 import * as Contentful from 'contentful';

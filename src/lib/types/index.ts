@@ -1,23 +1,16 @@
 export type { TypeAssortment, TypeAssortmentFields } from './TypeAssortment';
 export type { TypeAssortmentPage, TypeAssortmentPageFields } from './TypeAssortmentPage';
-export type { TypeBackground, TypeBackgroundFields } from './TypeBackground';
 export type { TypeBanner, TypeBannerFields } from './TypeBanner';
 export type { TypeBlogPostTest, TypeBlogPostTestFields } from './TypeBlogPostTest';
 export type { TypeBlogRoll, TypeBlogRollFields } from './TypeBlogRoll';
 export type { TypeCalculator, TypeCalculatorFields } from './TypeCalculator';
 export type { TypeCarousel, TypeCarouselFields } from './TypeCarousel';
 export type { TypeCarouselCategory, TypeCarouselCategoryFields } from './TypeCarouselCategory';
-export type { TypeCta, TypeCtaFields } from './TypeCta';
 export type { TypeExternalPage, TypeExternalPageFields } from './TypeExternalPage';
 export type { TypeFaq, TypeFaqFields } from './TypeFaq';
 export type { TypeFeaturedUsp, TypeFeaturedUspFields } from './TypeFeaturedUsp';
 export type { TypeFeaturedUspItem, TypeFeaturedUspItemFields } from './TypeFeaturedUspItem';
 export type { TypeHeroImage, TypeHeroImageFields } from './TypeHeroImage';
-export type {
-  TypeImageWithFocalPoint,
-  TypeImageWithFocalPointFields,
-} from './TypeImageWithFocalPoint';
-export type { TypeLinkTo, TypeLinkToFields } from './TypeLinkTo';
 export type { TypePage, TypePageFields } from './TypePage';
 export type { TypePageBlogCategory, TypePageBlogCategoryFields } from './TypePageBlogCategory';
 export type { TypePageBlogPost, TypePageBlogPostFields } from './TypePageBlogPost';

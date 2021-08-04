@@ -47,7 +47,7 @@ export const UspList = ({ fields }: TypeUspList) => {
                       <div className="pt-4">
                         <Link {...linkProps1}>
                           <a className="w-full md:w-auto text-gray-700 font-semibold text-center">
-                            {usp.fields.link.fields.text}
+                            {usp.fields.linkText}
                           </a>
                         </Link>
                       </div>

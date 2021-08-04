@@ -5,7 +5,8 @@ import { Background } from 'components/Section/background';
 import { Cta } from 'components/cta';
 
 export const SingleAsset = ({ fields }: TypeSingleAsset) => {
-  const { title, details, backgroundColor, illustrations, ctaType, ctaLabel, ctaTarget } = fields;
+  const { title, details, backgroundColor, illustrationsNew, ctaType, ctaLabel, ctaTarget } =
+    fields;
 
   return (
     <Background
@@ -21,11 +22,11 @@ export const SingleAsset = ({ fields }: TypeSingleAsset) => {
         </div>
         <div className="w-full grid justify-center">
           <div className="pt-4 flex flex-row flex-nowrap justify-start overflow-x-scroll">
-            {illustrations &&
-              illustrations.map(function (illustration, idx) {
+            {illustrationsNew &&
+              illustrationsNew.map(function (illustration, idx) {
                 return (
                   <div key={'sa-illustration-' + idx} className="flex flex-shrink-0 w-96 p-2">
-                    <img src={illustration.secure_url} />
+                    <img src={illustration.fields.file.url} />
                   </div>
                 );
               })}

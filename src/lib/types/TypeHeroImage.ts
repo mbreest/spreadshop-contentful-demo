@@ -9,7 +9,7 @@ export interface TypeHeroImageFields {
   backgroundOverlayColor?: Contentful.EntryFields.Symbol;
   title: Contentful.EntryFields.Symbol;
   details?: Contentful.EntryFields.Symbol;
-  illustrations?: Contentful.EntryFields.Object;
+  illustrationsNew?: Contentful.Asset[];
   ctaType?: 'Primary' | 'Ghost';
   ctaLabel?: Contentful.EntryFields.Symbol;
   ctaTarget?: Contentful.Entry<TypePageFields | TypeExternalPageFields>;

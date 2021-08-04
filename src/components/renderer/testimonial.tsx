@@ -6,7 +6,8 @@ import { Cta } from 'components/cta';
 import { isRichText, renderRichText } from 'lib/rich-text';
 
 export const Testimonial = ({ fields }: TypeTestimonial) => {
-  const { title, backgroundColor, showLogo, quotes, logos, ctaType, ctaLabel, ctaTarget } = fields;
+  const { title, backgroundColor, showLogo, quotes, logosNew, ctaType, ctaLabel, ctaTarget } =
+    fields;
 
   return (
     <Background
@@ -33,7 +34,7 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
                     key={idx}
                     className="w-full flex-shrink-0 md:flex md:flex-row md:p-8 items-center">
                     <div className="md:w-2/5">
-                      {showLogo && <img src={quote.fields.illustration[0].secure_url} />}
+                      {showLogo && <img src={quote.fields.illustrationNew.fields.file.url} />}
                     </div>
                     <div className="md:w-3/5 md:pl-8 ">
                       <div>{textComp}</div>
@@ -56,11 +57,11 @@ export const Testimonial = ({ fields }: TypeTestimonial) => {
             })}
         </div>
         <div className="pt-4 flex flex-wrap items-center">
-          {logos &&
-            logos.map(function (logo, idx) {
+          {logosNew &&
+            logosNew.map(function (logo, idx) {
               return (
                 <div key={idx} className="flex-shrink-0 p-4">
-                  <img src={logo.secure_url} className="w-28" />
+                  <img src={logo.fields.file.url} className="w-28" />
                 </div>
               );
             })}
