@@ -10,6 +10,7 @@ export type {
   TypeComponentSegmentedComponent,
   TypeComponentSegmentedComponentFields,
 } from './TypeComponentSegmentedComponent';
+export type { TypeComponentSlot, TypeComponentSlotFields } from './TypeComponentSlot';
 export type { TypeExternalPage, TypeExternalPageFields } from './TypeExternalPage';
 export type { TypeFaq, TypeFaqFields } from './TypeFaq';
 export type { TypeFeaturedUsp, TypeFeaturedUspFields } from './TypeFeaturedUsp';
@@ -28,6 +29,7 @@ export type { TypeQuote, TypeQuoteFields } from './TypeQuote';
 export type { TypeSeo, TypeSeoFields } from './TypeSeo';
 export type { TypeSingleAsset, TypeSingleAssetFields } from './TypeSingleAsset';
 export type { TypeSkuCarousel, TypeSkuCarouselFields } from './TypeSkuCarousel';
+export type { TypeSlotPlacement, TypeSlotPlacementFields } from './TypeSlotPlacement';
 export type { TypeTab, TypeTabFields } from './TypeTab';
 export type { TypeTable, TypeTableFields } from './TypeTable';
 export type { TypeTablist, TypeTablistFields } from './TypeTablist';

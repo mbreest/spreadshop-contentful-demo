@@ -6,6 +6,9 @@ import { Locale } from './translations';
 
 import { Product, Color } from './customtypes';
 
+import stringify from 'fast-safe-stringify';
+import { TypeSlotPlacement } from './types';
+
 const client = createClient({
   space: process.env.CF_SPACE_ID,
   accessToken: process.env.CF_DELIVERY_ACCESS_TOKEN,
@@ -87,6 +90,36 @@ export async function getBlogPosts(params: GetBlogPostTypeParams) {
   });
 
   return pages ? pages.map((page) => parsePage(page)) : [];
+}
+
+type GetSlotPlacementsParams = {
+  locale: Locale;
+  limit: number;
+  preview?: boolean;
+  slotId: string;
+  now: Date;
+};
+
+export async function getSlotPlacements(params: GetSlotPlacementsParams) {
+  const { preview, locale, limit, slotId, now } = params;
+  const client = getClient(preview);
+
+  const { items: slotPlacements } = await client.getEntries({
+    limit: limit,
+    include: 10,
+    locale,
+    content_type: 'slotPlacement',
+    'fields.slot.sys.id': slotId,
+    'fields.start[lte]': now.toISOString(),
+    'fields.end[gt]': now.toISOString(),
+    order: 'fields.start,fields.end',
+  });
+
+  return slotPlacements
+    ? slotPlacements.map(
+        (slotPlacement) => JSON.parse(stringify(slotPlacement)) as TypeSlotPlacement
+      )
+    : [];
 }
 
 const LANGUAGE_TO_LOCALE = {

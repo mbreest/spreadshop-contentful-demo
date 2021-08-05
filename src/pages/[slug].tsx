@@ -2,11 +2,11 @@
 import React from 'react';
 import ErrorPage from 'next/error';
 
-import { getPage, getBlogPosts } from 'lib/api';
+import { getPage, getBlogPosts, getSlotPlacements } from 'lib/api';
 import { isPreviewEnabled } from 'lib/preview';
 import { PageHead } from 'components/page-head';
 import { PageContentTypes } from 'lib/constants';
-import { TypeBlogRoll, TypePage, TypePageLandingpage } from 'lib/types';
+import { TypeBlogRoll, TypeComponentSlot, TypePage, TypePageLandingpage } from 'lib/types';
 import { BlockRenderer } from 'components/renderer/block-renderer';
 
 type LandingProps = {
@@ -54,6 +54,18 @@ export async function getServerSideProps({ params, query, locale, req }) {
         categoryId: blogRoll.fields.category.sys.id,
       });
       blogRoll.fields.topPosts = pages;
+    } else if (section.sys.contentType.sys.id == 'componentSlot') {
+      const slot = section as TypeComponentSlot;
+      const slotPlacements = await getSlotPlacements({
+        locale,
+        limit: 3,
+        preview,
+        slotId: slot.sys.id,
+        now: new Date(),
+      });
+      if (slotPlacements.length > 0) {
+        slot.fields.override = slotPlacements[0].fields.component;
+      }
     }
   }
 

@@ -4,6 +4,7 @@ import { TypeBlogRollFields } from './TypeBlogRoll';
 import { TypeCalculatorFields } from './TypeCalculator';
 import { TypeCarouselFields } from './TypeCarousel';
 import { TypeComponentSegmentedComponentFields } from './TypeComponentSegmentedComponent';
+import { TypeComponentSlotFields } from './TypeComponentSlot';
 import { TypeFaqFields } from './TypeFaq';
 import { TypeFeaturedUspFields } from './TypeFeaturedUsp';
 import { TypeHeroImageFields } from './TypeHeroImage';
@@ -26,6 +27,7 @@ export interface TypePageLandingpageFields {
     | TypeComponentSegmentedComponentFields
     | TypeSingleAssetFields
     | TypeSkuCarouselFields
+    | TypeComponentSlotFields
     | TypeTablistFields
     | TypeTestimonialFields
     | TypeUspListFields

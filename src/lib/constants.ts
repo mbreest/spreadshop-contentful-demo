@@ -16,6 +16,7 @@ export const ComponentContentTypes = {
   Faq: 'faq',
   Tabs: 'tablist',
   SegmentedComponent: 'componentSegmentedComponent',
+  Slot: 'componentSlot',
 };
 
 export const PageContentTypes = {
