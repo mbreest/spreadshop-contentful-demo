@@ -33,6 +33,8 @@ export default function Landing({ page, segment }: LandingProps) {
 
 export async function getServerSideProps({ params, query, locale, req }) {
   const slug = String((params && params.slug) ?? 'homepage');
+  const renderDate =
+    isPreviewEnabled(query) && query.renderDate ? new Date(query.renderDate) : new Date();
   const preview = isPreviewEnabled(query);
   const page = await getPage({
     slug,
@@ -61,7 +63,7 @@ export async function getServerSideProps({ params, query, locale, req }) {
         limit: 3,
         preview,
         slotId: slot.sys.id,
-        now: new Date(),
+        now: renderDate,
       });
       if (slotPlacements.length > 0) {
         slot.fields.override = slotPlacements[0].fields.component;

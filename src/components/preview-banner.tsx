@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import Link from 'next/link';
 
 import { disablePreview } from 'lib/preview';
 import { useNavigation } from 'lib/useNavigation';
+import { useRouter } from 'next/router';
+
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
+// CSS Modules, react-datepicker-cssmodules.css
+// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 export const PreviewBanner = () => {
   const { currentPath, isPreview, route } = useNavigation();
+
+  const [startDate, setStartDate] = useState(new Date());
+  const router = useRouter();
 
   if (!isPreview) {
     return null;
@@ -33,6 +45,17 @@ export const PreviewBanner = () => {
           <span className="font-semibold">Preview mode</span> is turned on. This enables viewing
           unpublished changes.
         </span>
+        <DatePicker
+          selected={startDate}
+          onChange={(date: Date) => {
+            setStartDate(date!);
+            router.query.renderDate = date.toISOString();
+            router.push(router);
+          }}
+          showTimeSelect
+          dateFormat="Pp"
+          className="text-black ml-4 mr-4 z-50 pl-2 pr-2"
+        />
         <Link href={route} as={exitURL}>
           <a className="flex font-semibold mr-3">Turn off</a>
         </Link>
