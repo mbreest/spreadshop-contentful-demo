@@ -1,25 +1,28 @@
 import React from 'react';
-import { TypeCta } from 'lib/types';
+import { TypeExternalPageFields, TypePageFields } from 'lib/types';
 import { Link } from 'components/link';
 import { useRouter } from 'next/router';
+import * as Contentful from 'contentful';
 
 type CtaProps = {
-  cta?: TypeCta;
+  ctaType?: 'Primary' | 'Ghost';
+  ctaLabel?: string;
+  ctaTarget?: Contentful.Entry<TypePageFields | TypeExternalPageFields>;
 };
 
-export const Cta = ({ cta }: CtaProps) => {
+export const Cta = ({ ctaType, ctaLabel, ctaTarget }: CtaProps) => {
   const { asPath: currentPath } = useRouter();
 
   let linkProps;
 
-  if (cta) {
-    if (typeof cta.fields.buttonTarget === 'string') {
+  if (ctaTarget) {
+    if (typeof ctaTarget === 'string') {
       linkProps = { href: currentPath };
     } else {
-      if ('url' in cta.fields.buttonTarget.fields) {
-        linkProps = { href: cta.fields.buttonTarget.fields.url };
-      } else if ('slug' in cta.fields.buttonTarget.fields) {
-        linkProps = { page: cta.fields.buttonTarget };
+      if ('url' in ctaTarget.fields) {
+        linkProps = { href: ctaTarget.fields.url };
+      } else if ('slug' in ctaTarget.fields) {
+        linkProps = { page: ctaTarget };
       }
     }
   }
@@ -36,21 +39,21 @@ export const Cta = ({ cta }: CtaProps) => {
 
   return (
     <>
-      {linkProps && cta.fields.buttonType == 'Primary' && (
+      {linkProps && ctaLabel && ctaType == 'Primary' && (
         <Link {...linkProps}>
           <a
             className="w-auto bg-yellow-600 hover:bg-yellow-500 text-white text-center"
             style={buttonStyling}>
-            {cta.fields.buttonLabel}
+            {ctaLabel}
           </a>
         </Link>
       )}
-      {linkProps && cta.fields.buttonType == 'Ghost' && (
+      {linkProps && ctaLabel && ctaType == 'Ghost' && (
         <Link {...linkProps}>
           <a
             className="w-auto bg-white text-gray-700 border-2 border-gray-700 text-center"
             style={buttonStyling}>
-            {cta.fields.buttonLabel}
+            {ctaLabel}
           </a>
         </Link>
       )}

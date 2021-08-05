@@ -23,8 +23,8 @@ const Cards = ({ cardData }) => {
                 id={idx}
                 title={usp.fields.title}
                 details={usp.fields.details}
-                hasImg={usp.fields.illustration}
-                imgSrc={usp.fields.illustration[0].secure_url}
+                hasImg={usp.fields.illustrationNew != undefined}
+                imgSrc={usp.fields.illustrationNew.fields.file.url}
               />
             </SwiperSlide>
           );

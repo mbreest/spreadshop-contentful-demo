@@ -24,7 +24,7 @@ export default function Blog({ news, interviews }: BlogProps) {
               const content = page.fields.content as TypePageBlogPost;
               return (
                 <div key={'article-' + idx} className="pr-4 pb-4 md:w-1/3">
-                  <img src={content.fields.illustration[0].secure_url} />
+                  <img src={content.fields.illustrationNew.fields.file.url} />
                   <div className="font-bold">{page.fields.title}</div>
                   <Link {...{ page: page }}>
                     <a className="text-yellow-600 underline">Weiterlesen</a>
@@ -44,7 +44,7 @@ export default function Blog({ news, interviews }: BlogProps) {
               const content = page.fields.content as TypePageBlogPost;
               return (
                 <div key={'article-' + idx} className="pr-4 pb-4 md:w-1/3">
-                  <img src={content.fields.illustration[0].secure_url} />
+                  <img src={content.fields.illustrationNew.fields.file.url} />
                   <div className="font-bold">{page.fields.title}</div>
                   <Link {...{ page: page }}>
                     <a className="text-yellow-600 underline">Weiterlesen</a>

@@ -6,12 +6,26 @@ import { Accordion, AccordionItem, AccordionPanel } from 'components/accordion';
 import { Background } from 'components/Section/background';
 
 export const Faq = ({ fields }: TypeFaq) => {
-  const { title, background, entries, questions, questionDetails, questionCta1, questionCta2 } =
-    fields;
+  const {
+    title,
+    backgroundColor,
+    entries,
+    questions,
+    questionDetails,
+    questionCtaLabel1,
+    questionCtaTarget1,
+    questionCtaLabel2,
+    questionCtaTarget2,
+  } = fields;
 
   return (
     <Background
-      {...{ background: background, image: null, imageIllustration: null, imageOverlay: null }}>
+      {...{
+        background: backgroundColor,
+        image: null,
+        imageIllustration: null,
+        imageOverlay: null,
+      }}>
       <div className="w-full flex flex-col">
         <div className="w-full grid justify-items-center">
           <h1 className="pt-4 text-3xl font-medium leading-tight text-gray-900">{title}</h1>
@@ -34,10 +48,22 @@ export const Faq = ({ fields }: TypeFaq) => {
           <div className="leading-relaxed text-lg text-gray-700 py-6">{questionDetails}</div>
           <div className="flex flex-row">
             <div className="pr-4">
-              <Cta {...{ cta: questionCta1 }} />
+              <Cta
+                {...{
+                  ctaType: 'Ghost' as const,
+                  ctaLabel: questionCtaLabel1,
+                  ctaTarget: questionCtaTarget1,
+                }}
+              />
             </div>
             <div>
-              <Cta {...{ cta: questionCta2 }} />
+              <Cta
+                {...{
+                  ctaType: 'Ghost' as const,
+                  ctaLabel: questionCtaLabel2,
+                  ctaTarget: questionCtaTarget2,
+                }}
+              />
             </div>
           </div>
         </div>

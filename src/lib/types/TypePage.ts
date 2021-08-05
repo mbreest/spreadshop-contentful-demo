@@ -1,4 +1,5 @@
 import * as Contentful from 'contentful';
+import { TypeAssortmentPageFields } from './TypeAssortmentPage';
 import { TypePageBlogCategoryFields } from './TypePageBlogCategory';
 import { TypePageBlogPostFields } from './TypePageBlogPost';
 import { TypePageHelpdeskArticleFields } from './TypePageHelpdeskArticle';
@@ -12,6 +13,7 @@ export interface TypePageFields {
   slug: Contentful.EntryFields.Symbol;
   seo?: Contentful.Entry<TypeSeoFields>;
   content: Contentful.Entry<
+    | TypeAssortmentPageFields
     | TypePageBlogCategoryFields
     | TypePageBlogPostFields
     | TypePageHelpdeskArticleFields

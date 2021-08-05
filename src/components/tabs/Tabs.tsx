@@ -1,8 +1,7 @@
 import React from 'react';
-import CommonTag from '../common/CommonTag';
+import { isRichText, renderRichText } from '../../lib/rich-text';
 const Tabs = ({ fields }) => {
   const { tab } = fields;
-  console.log('t', fields);
 
   return (
     <div className="tabs">
@@ -16,9 +15,9 @@ const Tabs = ({ fields }) => {
       <div className="tab__descriptions">
         {tab.map((t) => (
           <div key={t.title} className="tab__description">
-            {t.fields.description.content.map((tag, index) => (
-              <CommonTag key={index} type={tag.nodeType} content={tag.content} />
-            ))}
+            {t.fields.description.content.map((content, index) => {
+              return isRichText(content) ? renderRichText(content) : content;
+            })}
           </div>
         ))}
       </div>

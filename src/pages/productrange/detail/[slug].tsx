@@ -25,8 +25,13 @@ export default function ProductRangeDetail({ product, page }: ProductRangeDetail
 
   const content = page ? (page.fields.content as TypePageProduct) : null;
   const bg =
-    content && content?.fields.background
-      ? ({ ...content?.fields.background.fields } as const)
+    content && content?.fields.backgroundImage
+      ? ({
+          background: 'Light',
+          image: true,
+          imageOverlay: false,
+          imageIllustrationNew: content?.fields.backgroundImage,
+        } as const)
       : ({ background: 'Light', image: false, imageOverlay: false } as const);
   const testimonial = content && content?.fields.testimonial ? content?.fields.testimonial : null;
 

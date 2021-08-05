@@ -8,7 +8,7 @@ type BackgroundProps = {
   image: Contentful.EntryFields.Boolean;
   imageOverlay: Contentful.EntryFields.Boolean;
   overlayColor?: Contentful.EntryFields.Symbol;
-  imageIllustration?: Contentful.EntryFields.Object[];
+  imageIllustrationNew?: Contentful.Asset;
   children: React.ReactNode;
 };
 
@@ -17,7 +17,7 @@ export const Background = ({
   image,
   imageOverlay,
   overlayColor,
-  imageIllustration,
+  imageIllustrationNew,
   children,
 }: BackgroundProps) => {
   const sectionStyle = {
@@ -25,7 +25,8 @@ export const Background = ({
   } as React.CSSProperties;
 
   const backgroundStyle = {
-    backgroundImage: "url('" + (imageIllustration ? imageIllustration[0].secure_url : '') + "')",
+    backgroundImage:
+      "url('" + (imageIllustrationNew ? imageIllustrationNew.fields.file.url : '') + "')",
   } as React.CSSProperties;
 
   const overlayStyle = {

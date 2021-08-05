@@ -1,4 +1,5 @@
 import * as Contentful from 'contentful';
+import { TypeAssortmentFields } from './TypeAssortment';
 import { TypeBannerFields } from './TypeBanner';
 import { TypeBlogRollFields } from './TypeBlogRoll';
 import { TypeCalculatorFields } from './TypeCalculator';
@@ -8,14 +9,15 @@ import { TypeFeaturedUspFields } from './TypeFeaturedUsp';
 import { TypeHeroImageFields } from './TypeHeroImage';
 import { TypeSingleAssetFields } from './TypeSingleAsset';
 import { TypeSkuCarouselFields } from './TypeSkuCarousel';
-import { TypeTablistFields } from './TypeTablist';
 import { TypeTestimonialFields } from './TypeTestimonial';
 import { TypeUspListFields } from './TypeUspList';
 
-export interface TypePageLandingpageFields {
+export interface TypeAssortmentPageFields {
   name?: Contentful.EntryFields.Symbol;
   hero: Contentful.Entry<TypeHeroImageFields>;
   sections?: Contentful.Entry<
+    | TypeAssortmentFields
+    | TypeBannerFields
     | TypeBlogRollFields
     | TypeCalculatorFields
     | TypeCarouselFields
@@ -23,11 +25,9 @@ export interface TypePageLandingpageFields {
     | TypeFeaturedUspFields
     | TypeSingleAssetFields
     | TypeSkuCarouselFields
-    | TypeTablistFields
     | TypeTestimonialFields
     | TypeUspListFields
-    | TypeBannerFields
   >[];
 }
 
-export type TypePageLandingpage = Contentful.Entry<TypePageLandingpageFields>;
+export type TypeAssortmentPage = Contentful.Entry<TypeAssortmentPageFields>;
