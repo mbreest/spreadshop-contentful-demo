@@ -106,7 +106,7 @@ export default function ProductRangeDetail({ product, page }: ProductRangeDetail
           <div className="pt-4" dangerouslySetInnerHTML={{ __html: product.description }} />
         </div>
       </Background>
-      {testimonial && <BlockRenderer block={testimonial} />}
+      {testimonial && <BlockRenderer block={testimonial} segment={'default'} />}
     </div>
   );
 }

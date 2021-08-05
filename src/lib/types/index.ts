@@ -6,6 +6,10 @@ export type { TypeBlogRoll, TypeBlogRollFields } from './TypeBlogRoll';
 export type { TypeCalculator, TypeCalculatorFields } from './TypeCalculator';
 export type { TypeCarousel, TypeCarouselFields } from './TypeCarousel';
 export type { TypeCarouselCategory, TypeCarouselCategoryFields } from './TypeCarouselCategory';
+export type {
+  TypeComponentSegmentedComponent,
+  TypeComponentSegmentedComponentFields,
+} from './TypeComponentSegmentedComponent';
 export type { TypeExternalPage, TypeExternalPageFields } from './TypeExternalPage';
 export type { TypeFaq, TypeFaqFields } from './TypeFaq';
 export type { TypeFeaturedUsp, TypeFeaturedUspFields } from './TypeFeaturedUsp';

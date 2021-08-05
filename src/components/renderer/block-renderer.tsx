@@ -14,23 +14,48 @@ import { Calculator } from './calculator';
 import { BlogRoll } from './blogRoll';
 import { Faq } from './faq';
 import { SkuCarousel } from './skuCarousel';
+import { TypeComponentSegmentedComponent } from '../../lib/types';
 
 type BlockRendererProps = {
   block: any;
+  segment: string;
 };
 
-const BlockRenderer = ({ block }: BlockRendererProps) => {
+const BlockRenderer = ({ block, segment }: BlockRendererProps) => {
   if (Array.isArray(block)) {
     return (
       <>
         {block.map((b) => (
-          <BlockRenderer key={`block-${b.sys.id}`} block={b} />
+          <BlockRenderer key={`block-${b.sys.id}`} block={b} segment={segment} />
         ))}
       </>
     );
   }
 
-  const contentTypeId = _.get(block, 'sys.contentType.sys.id');
+  let contentTypeId = _.get(block, 'sys.contentType.sys.id');
+
+  let resolvedBlock;
+  if (contentTypeId === ComponentContentTypes.SegmentedComponent) {
+    const segmentedComponent = block as TypeComponentSegmentedComponent;
+    if ('default' === segment) {
+      resolvedBlock = segmentedComponent.fields.default;
+    } else if (
+      segmentedComponent.fields.segment1Name === segment &&
+      segmentedComponent.fields.segment1Component
+    ) {
+      resolvedBlock = segmentedComponent.fields.segment1Component;
+    } else if (
+      segmentedComponent.fields.segment2Name === segment &&
+      segmentedComponent.fields.segment2Component
+    ) {
+      resolvedBlock = segmentedComponent.fields.segment2Component;
+    }
+  } else {
+    resolvedBlock = block;
+  }
+
+  contentTypeId = _.get(resolvedBlock, 'sys.contentType.sys.id');
+
   const Component = ContentTypeMap[contentTypeId];
 
   if (!Component) {
@@ -38,10 +63,10 @@ const BlockRenderer = ({ block }: BlockRendererProps) => {
     return null;
   }
 
-  const { id } = block.sys;
+  const { id } = resolvedBlock.sys;
 
   const componentProps = {
-    ...block,
+    ...resolvedBlock,
     parent: block.parent,
   };
 
@@ -49,7 +74,7 @@ const BlockRenderer = ({ block }: BlockRendererProps) => {
 };
 
 const fromPage = (fieldName: string) => (parent: Entry<unknown>) =>
-  <BlockRenderer block={{ ...parent?.fields[fieldName], parent }} />;
+  <BlockRenderer block={{ ...parent?.fields[fieldName], parent }} segment={''} />;
 
 const ContentTypeMap = {
   [ComponentContentTypes.Hero]: Hero,
