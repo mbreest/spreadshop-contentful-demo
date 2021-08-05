@@ -15,6 +15,7 @@ export const ComponentContentTypes = {
   BlogRoll: 'blogRoll',
   Faq: 'faq',
   Tabs: 'tablist',
+  SegmentedComponent: 'componentSegmentedComponent',
 };
 
 export const PageContentTypes = {

@@ -3,6 +3,7 @@ import { TypeBannerFields } from './TypeBanner';
 import { TypeBlogRollFields } from './TypeBlogRoll';
 import { TypeCalculatorFields } from './TypeCalculator';
 import { TypeCarouselFields } from './TypeCarousel';
+import { TypeComponentSegmentedComponentFields } from './TypeComponentSegmentedComponent';
 import { TypeFaqFields } from './TypeFaq';
 import { TypeFeaturedUspFields } from './TypeFeaturedUsp';
 import { TypeHeroImageFields } from './TypeHeroImage';
@@ -16,17 +17,18 @@ export interface TypePageLandingpageFields {
   name?: Contentful.EntryFields.Symbol;
   hero: Contentful.Entry<TypeHeroImageFields>;
   sections?: Contentful.Entry<
+    | TypeBannerFields
     | TypeBlogRollFields
     | TypeCalculatorFields
     | TypeCarouselFields
     | TypeFaqFields
     | TypeFeaturedUspFields
+    | TypeComponentSegmentedComponentFields
     | TypeSingleAssetFields
     | TypeSkuCarouselFields
     | TypeTablistFields
     | TypeTestimonialFields
     | TypeUspListFields
-    | TypeBannerFields
   >[];
 }
 

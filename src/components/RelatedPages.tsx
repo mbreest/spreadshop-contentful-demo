@@ -25,7 +25,7 @@ export function RelatedPages({ pages }: RelatedPagesProps) {
 
           <div className="flex flex-row flex-wrap max-w-full lg:px-4 -mx-4 lg:mx-0 justify-center sm:justify-start">
             {pages.map((page, index) => (
-              <BlockRenderer key={index} block={page} />
+              <BlockRenderer key={index} block={page} segment={'default'} />
             ))}
           </div>
         </div>

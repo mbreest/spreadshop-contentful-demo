@@ -11,9 +11,10 @@ import { BlockRenderer } from 'components/renderer/block-renderer';
 
 type LandingProps = {
   page: TypePage;
+  segment: string;
 };
 
-export default function Landing({ page }: LandingProps) {
+export default function Landing({ page, segment }: LandingProps) {
   if (!page) {
     return <ErrorPage statusCode={404} />;
   }
@@ -24,13 +25,13 @@ export default function Landing({ page }: LandingProps) {
   return (
     <div className="w-full pb-16">
       <PageHead page={page} />
-      <BlockRenderer block={hero} />
-      <BlockRenderer block={sections} />
+      <BlockRenderer block={hero} segment={segment} />
+      <BlockRenderer block={sections} segment={segment} />
     </div>
   );
 }
 
-export async function getServerSideProps({ params, query, locale }) {
+export async function getServerSideProps({ params, query, locale, req }) {
   const slug = String((params && params.slug) ?? 'homepage');
   const preview = isPreviewEnabled(query);
   const page = await getPage({
@@ -56,7 +57,9 @@ export async function getServerSideProps({ params, query, locale }) {
     }
   }
 
+  const segment = req.cookies.segment || 'default';
+
   return {
-    props: { page },
+    props: { page, segment },
   };
 }
