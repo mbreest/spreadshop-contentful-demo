@@ -14,6 +14,7 @@ export const ComponentContentTypes = {
   Calculator: 'calculator',
   BlogRoll: 'blogRoll',
   Faq: 'faq',
+  Tabs: 'tablist',
 };
 
 export const PageContentTypes = {

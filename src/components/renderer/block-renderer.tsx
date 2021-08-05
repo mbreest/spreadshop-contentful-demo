@@ -14,6 +14,7 @@ import { Calculator } from './calculator';
 import { BlogRoll } from './blogRoll';
 import { Faq } from './faq';
 import { SkuCarousel } from './skuCarousel';
+import Tabs from '../tabs/Tabs';
 
 type BlockRendererProps = {
   block: any;
@@ -62,6 +63,7 @@ const ContentTypeMap = {
   [ComponentContentTypes.Calculator]: Calculator,
   [ComponentContentTypes.BlogRoll]: BlogRoll,
   [ComponentContentTypes.Faq]: Faq,
+  [ComponentContentTypes.Tabs]: Tabs,
   [ComponentContentTypes.SkuCarousel]: SkuCarousel,
   [PageContentType]: fromPage('content'),
 };
