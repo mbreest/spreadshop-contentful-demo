@@ -53,6 +53,14 @@ export const PreviewBanner = () => {
           </svg>
           <span className="font-semibold">Preview mode</span> is turned on.
         </span>
+        <button
+          onClick={(e) => {
+            router.query.time = '' + Date.now();
+            router.push(router);
+          }}
+          className="pl-4 pr-4 pt-2 pb-2 mr-4 bg-white text-black text-sm rounded">
+          Refresh
+        </button>
         <Select
           options={options}
           defaultValue={selectedOption}
@@ -62,7 +70,7 @@ export const PreviewBanner = () => {
             router.query.segment = option.value;
             router.push(router);
           }}
-          className="z-50 w-52 h-0.5 font-black text-sm pb-2"
+          className="z-50 w-52 h-0.5 text-black text-sm pb-2"
         />
         <DatePicker
           selected={startDate}
