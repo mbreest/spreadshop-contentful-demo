@@ -14,8 +14,8 @@ import { Calculator } from './calculator';
 import { BlogRoll } from './blogRoll';
 import { Faq } from './faq';
 import { SkuCarousel } from './skuCarousel';
+import { TypeComponentSegmentedComponent, TypeComponentSlot } from '../../lib/types';
 import Tabs from '../tabs/Tabs';
-import { TypeComponentSegmentedComponent } from '../../lib/types';
 
 type BlockRendererProps = {
   block: any;
@@ -35,7 +35,7 @@ const BlockRenderer = ({ block, segment }: BlockRendererProps) => {
 
   let contentTypeId = _.get(block, 'sys.contentType.sys.id');
 
-  let resolvedBlock;
+  let resolvedBlock = block;
   if (contentTypeId === ComponentContentTypes.SegmentedComponent) {
     const segmentedComponent = block as TypeComponentSegmentedComponent;
     if ('default' === segment) {
@@ -56,8 +56,13 @@ const BlockRenderer = ({ block, segment }: BlockRendererProps) => {
     ) {
       resolvedBlock = segmentedComponent.fields.segment3Component;
     }
-  } else {
-    resolvedBlock = block;
+  } else if (contentTypeId === ComponentContentTypes.Slot) {
+    const slotComponent = block as TypeComponentSlot;
+    if (slotComponent.fields.override) {
+      resolvedBlock = slotComponent.fields.override;
+    } else if (slotComponent.fields.default) {
+      resolvedBlock = slotComponent.fields.default;
+    }
   }
 
   contentTypeId = _.get(resolvedBlock, 'sys.contentType.sys.id');

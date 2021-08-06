@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import Link from 'next/link';
 
 import { disablePreview } from 'lib/preview';
 import { useNavigation } from 'lib/useNavigation';
+import { useRouter } from 'next/router';
+
+import Select from 'react-select';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
+// CSS Modules, react-datepicker-cssmodules.css
+// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 export const PreviewBanner = () => {
   const { currentPath, isPreview, route } = useNavigation();
+
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const router = useRouter();
 
   if (!isPreview) {
     return null;
   }
 
   const exitURL = disablePreview(currentPath);
+
+  const options = [
+    { value: 'default', label: 'Default' },
+    { value: 'men', label: 'Men' },
+    { value: 'women', label: 'Women' },
+    { value: 'accessoires', label: 'Accessoires' },
+  ];
 
   return (
     <div className="bg-blue-800 text-center py-4 lg:px-4">
@@ -30,9 +51,30 @@ export const PreviewBanner = () => {
               clipRule="evenodd"
             />
           </svg>
-          <span className="font-semibold">Preview mode</span> is turned on. This enables viewing
-          unpublished changes.
+          <span className="font-semibold">Preview mode</span> is turned on.
         </span>
+        <Select
+          options={options}
+          defaultValue={selectedOption}
+          onChange={(option) => {
+            setSelectedOption(option);
+            console.log(option);
+            router.query.segment = option.value;
+            router.push(router);
+          }}
+          className="z-50 w-52 h-0.5 font-black text-sm pb-2"
+        />
+        <DatePicker
+          selected={startDate}
+          onChange={(date: Date) => {
+            setStartDate(date!);
+            router.query.renderDate = date.toISOString();
+            router.push(router);
+          }}
+          showTimeSelect
+          dateFormat="Pp"
+          className="text-black ml-4 mr-4 z-50 pt-2 pb-1 pl-2 pr-2  rounded "
+        />
         <Link href={route} as={exitURL}>
           <a className="flex font-semibold mr-3">Turn off</a>
         </Link>

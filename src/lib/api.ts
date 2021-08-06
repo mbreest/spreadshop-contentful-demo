@@ -1,3 +1,5 @@
+import * as Contentful from 'contentful';
+
 import { createClient } from 'contentful';
 
 import { parsePage } from './pageParsers';
@@ -5,6 +7,9 @@ import { PageContentType } from './constants';
 import { Locale } from './translations';
 
 import { Product, Color } from './customtypes';
+
+import stringify from 'fast-safe-stringify';
+import { TypeSlotPlacement } from './types';
 
 const client = createClient({
   space: process.env.CF_SPACE_ID,
@@ -42,6 +47,22 @@ export async function getPage(params: GetPageParams) {
   } = await getClient(params.preview).getEntries(query);
 
   return page ? parsePage(page) : null;
+}
+
+type GetComponentParams = {
+  locale: Locale;
+  id: string;
+  preview?: boolean;
+};
+
+export async function getComponent(params: GetComponentParams) {
+  const query = {
+    include: 10,
+    locale: params.locale,
+  };
+  const component = await getClient(params.preview).getEntry(params.id, query);
+
+  return component ? (JSON.parse(stringify(component)) as Contentful.Entry<any>) : null;
 }
 
 type GetPagesOfTypeParams = {
@@ -87,6 +108,36 @@ export async function getBlogPosts(params: GetBlogPostTypeParams) {
   });
 
   return pages ? pages.map((page) => parsePage(page)) : [];
+}
+
+type GetSlotPlacementsParams = {
+  locale: Locale;
+  limit: number;
+  preview?: boolean;
+  slotId: string;
+  now: Date;
+};
+
+export async function getSlotPlacements(params: GetSlotPlacementsParams) {
+  const { preview, locale, limit, slotId, now } = params;
+  const client = getClient(preview);
+
+  const { items: slotPlacements } = await client.getEntries({
+    limit: limit,
+    include: 10,
+    locale,
+    content_type: 'slotPlacement',
+    'fields.slot.sys.id': slotId,
+    'fields.start[lte]': now.toISOString(),
+    'fields.end[gt]': now.toISOString(),
+    order: 'fields.start,fields.end',
+  });
+
+  return slotPlacements
+    ? slotPlacements.map(
+        (slotPlacement) => JSON.parse(stringify(slotPlacement)) as TypeSlotPlacement
+      )
+    : [];
 }
 
 const LANGUAGE_TO_LOCALE = {

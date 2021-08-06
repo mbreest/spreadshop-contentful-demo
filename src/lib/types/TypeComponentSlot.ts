@@ -30,6 +30,21 @@ export interface TypeComponentSlotFields {
     | TypeTestimonialFields
     | TypeUspListFields
   >;
+  override?: Contentful.Entry<
+    | TypeBannerFields
+    | TypeBlogRollFields
+    | TypeCalculatorFields
+    | TypeCarouselFields
+    | TypeFaqFields
+    | TypeFeaturedUspFields
+    | TypeHeroImageFields
+    | TypeComponentSegmentedComponentFields
+    | TypeSingleAssetFields
+    | TypeSkuCarouselFields
+    | TypeTablistFields
+    | TypeTestimonialFields
+    | TypeUspListFields
+  >;
 }
 
 export type TypeComponentSlot = Contentful.Entry<TypeComponentSlotFields>;
