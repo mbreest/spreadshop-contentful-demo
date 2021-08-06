@@ -1,3 +1,5 @@
+import * as Contentful from 'contentful';
+
 import { createClient } from 'contentful';
 
 import { parsePage } from './pageParsers';
@@ -45,6 +47,22 @@ export async function getPage(params: GetPageParams) {
   } = await getClient(params.preview).getEntries(query);
 
   return page ? parsePage(page) : null;
+}
+
+type GetComponentParams = {
+  locale: Locale;
+  id: string;
+  preview?: boolean;
+};
+
+export async function getComponent(params: GetComponentParams) {
+  const query = {
+    include: 10,
+    locale: params.locale,
+  };
+  const component = await getClient(params.preview).getEntry(params.id, query);
+
+  return component ? (JSON.parse(stringify(component)) as Contentful.Entry<any>) : null;
 }
 
 type GetPagesOfTypeParams = {
