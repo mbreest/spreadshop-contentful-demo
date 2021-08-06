@@ -51,7 +51,7 @@ export const PreviewBanner = () => {
               clipRule="evenodd"
             />
           </svg>
-          <span className="font-semibold">Preview mode</span> is turned on.
+          <span className="font-semibold">Preview</span>
         </span>
         <button
           onClick={(e) => {
