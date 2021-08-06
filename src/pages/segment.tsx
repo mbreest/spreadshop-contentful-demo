@@ -15,43 +15,57 @@ export default function Segment({ segment }: SegmentProps) {
           {segment == 'default' && (
             <a
               href="/segment?segment=default"
-              className="w-24 bg-yellow-600 hover:bg-yellow-500 text-white text-center p-2 m-2 font-bold">
+              className="w-28 bg-yellow-600 hover:bg-yellow-500 text-white text-center p-2 m-2 font-bold">
               Default
             </a>
           )}
           {segment != 'default' && (
             <a
               href="/segment?segment=default"
-              className="w-24 bg-white hover:bg-white border-black border-2 text-black text-center p-2 m-2 font-bold">
+              className="w-28 bg-white hover:bg-white border-black border-2 text-black text-center p-2 m-2 font-bold">
               Default
             </a>
           )}
           {segment == 'men' && (
             <a
               href="/segment?segment=men"
-              className="w-24 bg-yellow-600 hover:bg-yellow-500 text-white text-center p-2 m-2 font-bold">
+              className="w-28 bg-yellow-600 hover:bg-yellow-500 text-white text-center p-2 m-2 font-bold">
               Men
             </a>
           )}
           {segment != 'men' && (
             <a
               href="/segment?segment=men"
-              className="w-24 bg-white hover:bg-white border-black border-2 text-black text-center p-2 m-2 font-bold">
+              className="w-28 bg-white hover:bg-white border-black border-2 text-black text-center p-2 m-2 font-bold">
               Men
             </a>
           )}
           {segment == 'women' && (
             <a
               href="/segment?segment=women"
-              className="w-24 bg-yellow-600 hover:bg-yellow-500 text-white text-center p-2 m-2 font-bold">
+              className="w-28 bg-yellow-600 hover:bg-yellow-500 text-white text-center p-2 m-2 font-bold">
               Women
             </a>
           )}
           {segment != 'women' && (
             <a
               href="/segment?segment=women"
-              className="w-24 bg-white hover:bg-white border-black border-2 text-black text-center p-2 m-2 font-bold">
+              className="w-28 bg-white hover:bg-white border-black border-2 text-black text-center p-2 m-2 font-bold">
               Women
+            </a>
+          )}
+          {segment == 'accessoires' && (
+            <a
+              href="/segment?segment=accessoires"
+              className="w-28 bg-yellow-600 hover:bg-yellow-500 text-white text-center p-2 m-2 font-bold">
+              Accessoires
+            </a>
+          )}
+          {segment != 'accessoires' && (
+            <a
+              href="/segment?segment=accessoires"
+              className="w-28 bg-white hover:bg-white border-black border-2 text-black text-center p-2 m-2 font-bold">
+              Accessoires
             </a>
           )}
         </div>
