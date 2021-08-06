@@ -50,6 +50,11 @@ const BlockRenderer = ({ block, segment }: BlockRendererProps) => {
       segmentedComponent.fields.segment2Component
     ) {
       resolvedBlock = segmentedComponent.fields.segment2Component;
+    } else if (
+      segmentedComponent.fields.segment3Name === segment &&
+      segmentedComponent.fields.segment3Component
+    ) {
+      resolvedBlock = segmentedComponent.fields.segment3Component;
     }
   } else {
     resolvedBlock = block;

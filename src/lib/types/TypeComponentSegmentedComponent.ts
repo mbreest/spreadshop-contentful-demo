@@ -57,6 +57,8 @@ export interface TypeComponentSegmentedComponentFields {
     | TypeTestimonialFields
     | TypeUspListFields
   >;
+  segment3Name: Contentful.EntryFields.Symbol;
+  segment3Component?: Contentful.Entry<TypeSkuCarouselFields>;
 }
 
 export type TypeComponentSegmentedComponent =

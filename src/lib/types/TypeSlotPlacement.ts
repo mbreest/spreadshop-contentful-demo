@@ -14,24 +14,26 @@ import { TypeTablistFields } from './TypeTablist';
 import { TypeTestimonialFields } from './TypeTestimonial';
 import { TypeUspListFields } from './TypeUspList';
 
-export interface TypePageLandingpageFields {
-  name?: Contentful.EntryFields.Symbol;
-  hero: Contentful.Entry<TypeHeroImageFields>;
-  sections?: Contentful.Entry<
+export interface TypeSlotPlacementFields {
+  name: Contentful.EntryFields.Symbol;
+  slot: Contentful.Entry<TypeComponentSlotFields>;
+  component: Contentful.Entry<
     | TypeBannerFields
     | TypeBlogRollFields
     | TypeCalculatorFields
     | TypeCarouselFields
     | TypeFaqFields
     | TypeFeaturedUspFields
+    | TypeHeroImageFields
     | TypeComponentSegmentedComponentFields
     | TypeSingleAssetFields
     | TypeSkuCarouselFields
-    | TypeComponentSlotFields
     | TypeTablistFields
     | TypeTestimonialFields
     | TypeUspListFields
-  >[];
+  >;
+  start: Contentful.EntryFields.Date;
+  end: Contentful.EntryFields.Date;
 }
 
-export type TypePageLandingpage = Contentful.Entry<TypePageLandingpageFields>;
+export type TypeSlotPlacement = Contentful.Entry<TypeSlotPlacementFields>;
