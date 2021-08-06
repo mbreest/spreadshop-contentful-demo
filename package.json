@@ -21,6 +21,7 @@
     "@contentful/rich-text-types": "^14.1.2",
     "@tailwindcss/typography": "^0.4.1",
     "@types/react-datepicker": "^4.1.4",
+    "@types/react-select": "^4.0.17",
     "classnames": "^2.3.1",
     "contentful": "^8.4.2",
     "cookie": "^0.4.1",
@@ -32,7 +33,8 @@
     "react-datepicker": "^4.1.1",
     "react-dom": "^16.14.0",
     "react-player": "^2.9.0",
-    "react-router": "^5.2.0"
+    "react-router": "^5.2.0",
+    "react-select": "^4.3.1"
   },
   "devDependencies": {
     "@types/classnames": "^2.3.1",

@@ -6,6 +6,7 @@ import { disablePreview } from 'lib/preview';
 import { useNavigation } from 'lib/useNavigation';
 import { useRouter } from 'next/router';
 
+import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -16,6 +17,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 export const PreviewBanner = () => {
   const { currentPath, isPreview, route } = useNavigation();
 
+  const [selectedOption, setSelectedOption] = useState(null);
   const [startDate, setStartDate] = useState(new Date());
   const router = useRouter();
 
@@ -24,6 +26,13 @@ export const PreviewBanner = () => {
   }
 
   const exitURL = disablePreview(currentPath);
+
+  const options = [
+    { value: 'default', label: 'Default' },
+    { value: 'men', label: 'Men' },
+    { value: 'women', label: 'Women' },
+    { value: 'accessoires', label: 'Accessoires' },
+  ];
 
   return (
     <div className="bg-blue-800 text-center py-4 lg:px-4">
@@ -42,9 +51,19 @@ export const PreviewBanner = () => {
               clipRule="evenodd"
             />
           </svg>
-          <span className="font-semibold">Preview mode</span> is turned on. This enables viewing
-          unpublished changes.
+          <span className="font-semibold">Preview mode</span> is turned on.
         </span>
+        <Select
+          options={options}
+          defaultValue={selectedOption}
+          onChange={(option) => {
+            setSelectedOption(option);
+            console.log(option);
+            router.query.segment = option.value;
+            router.push(router);
+          }}
+          className="z-50 w-52 h-0.5 font-black text-sm pb-2"
+        />
         <DatePicker
           selected={startDate}
           onChange={(date: Date) => {
@@ -54,7 +73,7 @@ export const PreviewBanner = () => {
           }}
           showTimeSelect
           dateFormat="Pp"
-          className="text-black ml-4 mr-4 z-50 pl-2 pr-2"
+          className="text-black ml-4 mr-4 z-50 pt-2 pb-1 pl-2 pr-2  rounded "
         />
         <Link href={route} as={exitURL}>
           <a className="flex font-semibold mr-3">Turn off</a>

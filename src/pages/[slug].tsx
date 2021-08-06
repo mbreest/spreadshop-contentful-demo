@@ -71,7 +71,7 @@ export async function getServerSideProps({ params, query, locale, req }) {
     }
   }
 
-  const segment = req.cookies.segment || 'default';
+  const segment = query.segment || req.cookies.segment || 'default';
 
   return {
     props: { page, segment },
