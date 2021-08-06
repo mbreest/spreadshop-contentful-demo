@@ -56,30 +56,6 @@ type GetComponentParams = {
   preview?: boolean;
 };
 
-type GetPageByIdParams = {
-  locale: Locale;
-  preview?: boolean;
-  id: string;
-};
-
-export async function getPageById(params: GetPageByIdParams) {
-  const { preview, locale, id } = params;
-  const client = getClient(preview);
-
-  const {
-    items: [page],
-  } = await client.getEntries({
-    limit: 1,
-    include: 10,
-    locale,
-    content_type: 'page',
-    'fields.content.sys.id': id,
-    order: 'sys.createdAt',
-  });
-
-  return page ? parsePage(page) : null;
-}
-
 export async function getComponent(params: GetComponentParams) {
   const query = {
     include: 10,
