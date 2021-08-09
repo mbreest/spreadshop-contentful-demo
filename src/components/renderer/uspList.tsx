@@ -25,7 +25,7 @@ export const UspList = ({ fields }: TypeUspList) => {
           {usps &&
             usps.map(function (usp, idx) {
               let linkProps1;
-              if (usp.fields.linkTarget) {
+              if (usp.fields && usp.fields.linkTarget) {
                 if ('url' in usp.fields.linkTarget.fields) {
                   linkProps1 = { href: usp.fields.linkTarget.fields.url };
                 } else if ('slug' in usp.fields.linkTarget.fields) {

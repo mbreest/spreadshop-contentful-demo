@@ -24,11 +24,13 @@ export const SingleAsset = ({ fields }: TypeSingleAsset) => {
           <div className="pt-4 flex flex-row flex-nowrap justify-start overflow-x-scroll">
             {illustrationsNew &&
               illustrationsNew.map(function (illustration, idx) {
-                return (
-                  <div key={'sa-illustration-' + idx} className="flex flex-shrink-0 w-96 p-2">
-                    <img src={illustration.fields.file.url} />
-                  </div>
-                );
+                if (illustration.fields) {
+                  return (
+                    <div key={'sa-illustration-' + idx} className="flex flex-shrink-0 w-96 p-2">
+                      <img src={illustration.fields.file.url} />
+                    </div>
+                  );
+                }
               })}
           </div>
         </div>
