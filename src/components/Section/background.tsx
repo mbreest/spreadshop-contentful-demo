@@ -26,7 +26,11 @@ export const Background = ({
 
   const backgroundStyle = {
     backgroundImage:
-      "url('" + (imageIllustrationNew ? imageIllustrationNew.fields.file.url : '') + "')",
+      "url('" +
+      (imageIllustrationNew && imageIllustrationNew.fields && imageIllustrationNew.fields.file
+        ? imageIllustrationNew.fields.file.url
+        : '') +
+      "')",
   } as React.CSSProperties;
 
   const overlayStyle = {
