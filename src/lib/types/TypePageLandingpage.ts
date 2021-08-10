@@ -16,7 +16,9 @@ import { TypeUspListFields } from './TypeUspList';
 
 export interface TypePageLandingpageFields {
   name?: Contentful.EntryFields.Symbol;
-  hero: Contentful.Entry<TypeHeroImageFields>;
+  hero: Contentful.Entry<
+    TypeHeroImageFields | TypeComponentSegmentedComponentFields | TypeComponentSlotFields
+  >;
   sections?: Contentful.Entry<
     | TypeBannerFields
     | TypeBlogRollFields

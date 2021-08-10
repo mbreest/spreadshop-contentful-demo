@@ -45,7 +45,20 @@ export async function getServerSideProps({ params, query, locale, req }) {
 
   // TODO improve through graphql usage?
   const content = page.fields.content as TypePageLandingpage;
-  const { sections = [] } = content?.fields;
+  const { sections = [], hero } = content?.fields;
+  if (hero && hero!.sys.contentType!.sys.id == 'componentSlot') {
+    const slot = hero as TypeComponentSlot;
+    const slotPlacements = await getSlotPlacements({
+      locale,
+      limit: 3,
+      preview,
+      slotId: slot.sys.id,
+      now: renderDate,
+    });
+    if (slotPlacements.length > 0) {
+      slot.fields.override = slotPlacements[0].fields.component;
+    }
+  }
   for (const section of sections) {
     if (section.sys.contentType) {
       if (section.sys.contentType.sys.id == 'blogRoll') {
