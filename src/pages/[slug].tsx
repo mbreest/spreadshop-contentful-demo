@@ -47,26 +47,28 @@ export async function getServerSideProps({ params, query, locale, req }) {
   const content = page.fields.content as TypePageLandingpage;
   const { sections = [] } = content?.fields;
   for (const section of sections) {
-    if (section.sys.contentType.sys.id == 'blogRoll') {
-      const blogRoll = section as TypeBlogRoll;
-      const pages = await getBlogPosts({
-        locale,
-        limit: 3,
-        preview,
-        categoryId: blogRoll.fields.category.sys.id,
-      });
-      blogRoll.fields.topPosts = pages;
-    } else if (section.sys.contentType.sys.id == 'componentSlot') {
-      const slot = section as TypeComponentSlot;
-      const slotPlacements = await getSlotPlacements({
-        locale,
-        limit: 3,
-        preview,
-        slotId: slot.sys.id,
-        now: renderDate,
-      });
-      if (slotPlacements.length > 0) {
-        slot.fields.override = slotPlacements[0].fields.component;
+    if (section.sys.contentType) {
+      if (section.sys.contentType.sys.id == 'blogRoll') {
+        const blogRoll = section as TypeBlogRoll;
+        const pages = await getBlogPosts({
+          locale,
+          limit: 3,
+          preview,
+          categoryId: blogRoll.fields.category.sys.id,
+        });
+        blogRoll.fields.topPosts = pages;
+      } else if (section.sys.contentType.sys.id == 'componentSlot') {
+        const slot = section as TypeComponentSlot;
+        const slotPlacements = await getSlotPlacements({
+          locale,
+          limit: 3,
+          preview,
+          slotId: slot.sys.id,
+          now: renderDate,
+        });
+        if (slotPlacements.length > 0) {
+          slot.fields.override = slotPlacements[0].fields.component;
+        }
       }
     }
   }
