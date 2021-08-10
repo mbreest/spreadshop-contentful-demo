@@ -15,6 +15,7 @@ export const ComponentContentTypes = {
   BlogRoll: 'blogRoll',
   Faq: 'faq',
   Tabs: 'tablist',
+  Grid: 'componentGrid',
   SegmentedComponent: 'componentSegmentedComponent',
   Slot: 'componentSlot',
 };

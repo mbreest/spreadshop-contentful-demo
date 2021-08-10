@@ -14,6 +14,7 @@ import { Calculator } from './calculator';
 import { BlogRoll } from './blogRoll';
 import { Faq } from './faq';
 import { SkuCarousel } from './skuCarousel';
+import { Grid } from './grid';
 import { TypeComponentSegmentedComponent, TypeComponentSlot } from '../../lib/types';
 import Tabs from '../tabs/Tabs';
 
@@ -100,6 +101,7 @@ const ContentTypeMap = {
   [ComponentContentTypes.Faq]: Faq,
   [ComponentContentTypes.Tabs]: Tabs,
   [ComponentContentTypes.SkuCarousel]: SkuCarousel,
+  [ComponentContentTypes.Grid]: Grid,
   [PageContentType]: fromPage('content'),
 };
 
