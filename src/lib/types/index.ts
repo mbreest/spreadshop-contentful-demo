@@ -35,3 +35,4 @@ export type { TypeTable, TypeTableFields } from './TypeTable';
 export type { TypeTablist, TypeTablistFields } from './TypeTablist';
 export type { TypeTestimonial, TypeTestimonialFields } from './TypeTestimonial';
 export type { TypeUspList, TypeUspListFields } from './TypeUspList';
+export type { TypeComponentGrid, TypeComponentGridFields } from './TypeComponentGrid';
