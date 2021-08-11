@@ -3,6 +3,7 @@ import { TypeBannerFields } from './TypeBanner';
 import { TypeBlogRollFields } from './TypeBlogRoll';
 import { TypeCalculatorFields } from './TypeCalculator';
 import { TypeCarouselFields } from './TypeCarousel';
+import { TypeComponentGridFields } from './TypeComponentGrid';
 import { TypeFaqFields } from './TypeFaq';
 import { TypeFeaturedUspFields } from './TypeFeaturedUsp';
 import { TypeHeroImageFields } from './TypeHeroImage';
@@ -21,6 +22,7 @@ export interface TypeComponentSegmentedComponentFields {
     | TypeCarouselFields
     | TypeFaqFields
     | TypeFeaturedUspFields
+    | TypeComponentGridFields
     | TypeHeroImageFields
     | TypeSingleAssetFields
     | TypeSkuCarouselFields
@@ -35,6 +37,7 @@ export interface TypeComponentSegmentedComponentFields {
     | TypeCalculatorFields
     | TypeFaqFields
     | TypeFeaturedUspFields
+    | TypeComponentGridFields
     | TypeHeroImageFields
     | TypeSingleAssetFields
     | TypeSkuCarouselFields
@@ -50,6 +53,7 @@ export interface TypeComponentSegmentedComponentFields {
     | TypeCarouselFields
     | TypeFaqFields
     | TypeFeaturedUspFields
+    | TypeComponentGridFields
     | TypeHeroImageFields
     | TypeSingleAssetFields
     | TypeSkuCarouselFields
@@ -58,7 +62,21 @@ export interface TypeComponentSegmentedComponentFields {
     | TypeUspListFields
   >;
   segment3Name: Contentful.EntryFields.Symbol;
-  segment3Component?: Contentful.Entry<TypeSkuCarouselFields>;
+  segment3Component?: Contentful.Entry<
+    | TypeBannerFields
+    | TypeBlogRollFields
+    | TypeCalculatorFields
+    | TypeCarouselFields
+    | TypeFaqFields
+    | TypeFeaturedUspFields
+    | TypeComponentGridFields
+    | TypeHeroImageFields
+    | TypeSingleAssetFields
+    | TypeSkuCarouselFields
+    | TypeTablistFields
+    | TypeTestimonialFields
+    | TypeUspListFields
+  >;
 }
 
 export type TypeComponentSegmentedComponent =

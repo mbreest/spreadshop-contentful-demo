@@ -3,6 +3,7 @@ import { TypeBannerFields } from './TypeBanner';
 import { TypeBlogRollFields } from './TypeBlogRoll';
 import { TypeCalculatorFields } from './TypeCalculator';
 import { TypeCarouselFields } from './TypeCarousel';
+import { TypeComponentGridFields } from './TypeComponentGrid';
 import { TypeComponentSegmentedComponentFields } from './TypeComponentSegmentedComponent';
 import { TypeComponentSlotFields } from './TypeComponentSlot';
 import { TypeFaqFields } from './TypeFaq';
@@ -24,6 +25,7 @@ export interface TypeSlotPlacementFields {
     | TypeCarouselFields
     | TypeFaqFields
     | TypeFeaturedUspFields
+    | TypeComponentGridFields
     | TypeHeroImageFields
     | TypeComponentSegmentedComponentFields
     | TypeSingleAssetFields
