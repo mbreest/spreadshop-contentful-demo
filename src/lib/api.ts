@@ -3,7 +3,7 @@ import * as Contentful from 'contentful';
 import { createClient } from 'contentful';
 
 import { parsePage } from './pageParsers';
-import { PageContentType } from './constants';
+import { PageContentType, PageContentTypes } from './constants';
 import { Locale } from './translations';
 
 import { Product, Color } from './customtypes';
@@ -12,7 +12,7 @@ import stringify from 'fast-safe-stringify';
 import { TypeSlotPlacement } from './types';
 import { resolve } from 'path';
 
-const client = createClient({
+export const client = createClient({
   space: process.env.CF_SPACE_ID,
   accessToken: process.env.CF_DELIVERY_ACCESS_TOKEN,
 });
@@ -104,6 +104,19 @@ export async function getBlogPosts(params: GetBlogPostTypeParams) {
     locale,
     content_type: 'page',
     'fields.content.sys.contentType.sys.id': 'pageBlogPost',
+    'fields.content.fields.category.sys.id': categoryId,
+    order: 'sys.createdAt',
+  });
+
+  return pages ? pages.map((page) => parsePage(page)) : [];
+}
+
+export async function getJobEntries({ categoryId }) {
+  const client = getClient(false);
+
+  const { items: pages } = await client.getEntries({
+    content_type: 'page',
+    'fields.content.sys.contentType.sys.id': PageContentTypes.SpreadGroup,
     'fields.content.fields.category.sys.id': categoryId,
     order: 'sys.createdAt',
   });

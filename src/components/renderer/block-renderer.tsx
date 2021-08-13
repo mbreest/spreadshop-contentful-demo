@@ -17,10 +17,15 @@ import { SkuCarousel } from './skuCarousel';
 import { Grid } from './grid';
 import { TypeComponentSegmentedComponent, TypeComponentSlot } from '../../lib/types';
 import Tabs from '../tabs/Tabs';
+import SpgrSection from '../spreadgroup/SpgrSection';
+import SpgrTeaser from '../spreadgroup/SpgrTeaser';
+import SpgrJobArchive from '../spreadgroup/jobArchive/SpgrJobArchive';
+import SpgrRecruitingSpecialist from '../spreadgroup/SpgrRecruitingSpecialist';
+import SpgrSingleJob from '../spreadgroup/SpgrSingleJob';
 
 type BlockRendererProps = {
   block: any;
-  segment: string;
+  segment?: string;
 };
 
 const BlockRenderer = ({ block, segment }: BlockRendererProps) => {
@@ -82,6 +87,8 @@ const BlockRenderer = ({ block, segment }: BlockRendererProps) => {
     parent: block.parent,
   };
 
+  //eslint-disable-next-line
+  //@ts-ignore
   return <Component key={`${contentTypeId}-${id}`} {...componentProps} />;
 };
 
@@ -102,6 +109,11 @@ const ContentTypeMap = {
   [ComponentContentTypes.Tabs]: Tabs,
   [ComponentContentTypes.SkuCarousel]: SkuCarousel,
   [ComponentContentTypes.Grid]: Grid,
+  [ComponentContentTypes.SpgrSection]: SpgrSection,
+  [ComponentContentTypes.SpgrTeaser]: SpgrTeaser,
+  [ComponentContentTypes.SpgrJobArchive]: SpgrJobArchive,
+  [ComponentContentTypes.SpgrRecruitingSpecialist]: SpgrRecruitingSpecialist,
+  [ComponentContentTypes.SpgrSingleJobLocal]: SpgrSingleJob,
   [PageContentType]: fromPage('content'),
 };
 

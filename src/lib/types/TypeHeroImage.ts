@@ -3,6 +3,7 @@ import { TypeExternalPageFields } from './TypeExternalPage';
 import { TypePageFields } from './TypePage';
 
 export interface TypeHeroImageFields {
+  internalname?: Contentful.EntryFields.Symbol;
   subPage: Contentful.EntryFields.Boolean;
   backgroundColor: 'White' | 'Light' | 'Dark';
   backgroundImage?: Contentful.Asset;

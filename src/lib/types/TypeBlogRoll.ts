@@ -1,8 +1,7 @@
 import * as Contentful from 'contentful';
 import { TypeExternalPageFields } from './TypeExternalPage';
-import { TypePageFields } from './TypePage';
+import { TypePage, TypePageFields } from './TypePage';
 import { TypePageBlogCategoryFields } from './TypePageBlogCategory';
-import { TypePage } from './TypePage';
 
 export interface TypeBlogRollFields {
   anchor: Contentful.EntryFields.Symbol;

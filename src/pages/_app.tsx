@@ -1,14 +1,21 @@
 import React from 'react';
 import Head from 'next/head';
 
-import 'styles/index.css';
-import 'swiper/swiper.min.css';
 import { PreviewBanner } from 'components/preview-banner';
 import { TopNavigation } from 'components/top-navigation';
 import { LocaleContext } from 'lib/translations';
+import { PageContentTypes } from '../lib/constants';
 
 function SpreadshopApp({ Component, pageProps }) {
   const { locale, ...otherPageProps } = pageProps;
+  const isSpreadGroupPage =
+    pageProps.page.fields.content.sys.contentType.sys.id === PageContentTypes.SpreadGroup ||
+    pageProps.page.fields.content.sys.contentType.sys.id === PageContentTypes.SpreadGroupSingleJobs;
+
+  if (!isSpreadGroupPage) {
+    import('styles/index.css');
+    import('swiper/swiper.min.css');
+  }
 
   return (
     <LocaleContext.Provider value={locale}>
@@ -21,10 +28,17 @@ function SpreadshopApp({ Component, pageProps }) {
             content={`Spreadshop Contentful Website Demo`}
             key="description"
           />
+          {isSpreadGroupPage && (
+            <link
+              href="https://www.spreadgroup.com/wp-content/themes/spreadgroup_theme/style.css?cb=776024"
+              rel="stylesheet"
+              type="text/css"
+            />
+          )}
         </Head>
         <PreviewBanner />
         <div className="w-full flex flex-col relative">
-          <TopNavigation />
+          {!isSpreadGroupPage && <TopNavigation />}
           <Component {...otherPageProps} />
         </div>
       </div>

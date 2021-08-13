@@ -18,6 +18,12 @@ export const ComponentContentTypes = {
   Grid: 'componentGrid',
   SegmentedComponent: 'componentSegmentedComponent',
   Slot: 'componentSlot',
+  SpgrSection: 'spgrSection',
+  SpgrTeaser: 'spgrTeaser',
+  SpgrJobArchive: 'spgrJobArchive',
+  SpgrRecruitingSpecialist: 'spgrRecruitingSpecialist',
+  SpgrSingleJobGlobal: 'spgrSingleJob',
+  SpgrSingleJobLocal: 'spgrSingleJobLocal',
 };
 
 export const PageContentTypes = {
@@ -26,6 +32,8 @@ export const PageContentTypes = {
   BlogCategory: 'pageBlogCategory',
   BlogPost: 'pageBlogPost',
   Product: 'pageProduct',
+  SpreadGroup: 'pagePagetypeSpreadGroupPage',
+  SpreadGroupSingleJobs: 'pagePagetypeSpreadGroupSingleJob',
 };
 
 export const fallbackImage = {
