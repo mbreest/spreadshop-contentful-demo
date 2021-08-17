@@ -21,7 +21,7 @@ import SpgrSection from '../spreadgroup/SpgrSection';
 import SpgrTeaser from '../spreadgroup/SpgrTeaser';
 import SpgrJobArchive from '../spreadgroup/jobArchive/SpgrJobArchive';
 import SpgrRecruitingSpecialist from '../spreadgroup/SpgrRecruitingSpecialist';
-import SpgrSingleJob from '../spreadgroup/SpgrSingleJob';
+import SpgrSingleJob from '../spreadgroup/singleJob/SpgrSingleJob';
 
 type BlockRendererProps = {
   block: any;

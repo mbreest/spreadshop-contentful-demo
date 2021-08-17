@@ -7,7 +7,9 @@ import { LocaleContext } from 'lib/translations';
 import { PageContentTypes } from '../lib/constants';
 
 function SpreadshopApp({ Component, pageProps }) {
-  const { locale, ...otherPageProps } = pageProps;
+  const { ...otherPageProps } = pageProps;
+  const locale = pageProps.page.sys.locale;
+
   const isSpreadGroupPage =
     pageProps.page.fields.content.sys.contentType.sys.id === PageContentTypes.SpreadGroup ||
     pageProps.page.fields.content.sys.contentType.sys.id === PageContentTypes.SpreadGroupSingleJobs;

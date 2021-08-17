@@ -1,7 +1,6 @@
 import React from 'react';
 import { renderRichText } from '../../lib/rich-text';
 const SpgrTeaser = ({ fields }) => {
-  console.log(fields);
   const { subline, title, teaser } = fields;
   return (
     <div className="teaser">

@@ -24,6 +24,7 @@ export const ComponentContentTypes = {
   SpgrRecruitingSpecialist: 'spgrRecruitingSpecialist',
   SpgrSingleJobGlobal: 'spgrSingleJob',
   SpgrSingleJobLocal: 'spgrSingleJobLocal',
+  SpgrCategoryDepartment: 'spgrDepartmentCategory',
 };
 
 export const PageContentTypes = {
