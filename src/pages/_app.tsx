@@ -6,18 +6,18 @@ import { TopNavigation } from 'components/top-navigation';
 import { LocaleContext } from 'lib/translations';
 import { PageContentTypes } from '../lib/constants';
 
+import 'styles/index.css';
+import 'swiper/swiper.min.css';
+
 function SpreadshopApp({ Component, pageProps }) {
-  const { ...otherPageProps } = pageProps;
-  const locale = pageProps.page.sys.locale;
+  const { locale, ...otherPageProps } = pageProps;
 
   const isSpreadGroupPage =
-    pageProps.page.fields.content.sys.contentType.sys.id === PageContentTypes.SpreadGroup ||
-    pageProps.page.fields.content.sys.contentType.sys.id === PageContentTypes.SpreadGroupSingleJobs;
-
-  if (!isSpreadGroupPage) {
-    import('styles/index.css');
-    import('swiper/swiper.min.css');
-  }
+    pageProps.page &&
+    pageProps.page.fields.content &&
+    (pageProps.page.fields.content.sys.contentType.sys.id === PageContentTypes.SpreadGroup ||
+      pageProps.page.fields.content.sys.contentType.sys.id ===
+        PageContentTypes.SpreadGroupSingleJobs);
 
   return (
     <LocaleContext.Provider value={locale}>

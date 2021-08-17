@@ -31,7 +31,7 @@ const SpgrSingleJob = ({ page }) => {
         <div
           className="jobdetail container"
           id="jobdetail"
-          itemScope=""
+          itemScope
           itemType="http://schema.org/JobPosting">
           <span className="d-none" itemProp="datePosted">
             2021-08-06
@@ -39,18 +39,18 @@ const SpgrSingleJob = ({ page }) => {
           <span
             className="d-none"
             itemProp="hiringOrganization"
-            itemScope=""
+            itemScope
             itemType="http://schema.org/Organization">
             <span itemProp="name">Spread Group</span>
           </span>
           <span className="d-none" itemProp="employmentType">
             Vollzeit
           </span>
-          <span itemProp="jobLocation" itemScope="" itemType="http://schema.org/Place">
+          <span itemProp="jobLocation" itemScope itemType="http://schema.org/Place">
             <span
               className="d-none"
               itemProp="address"
-              itemScope=""
+              itemScope
               itemType="http://schema.org/PostalAddress">
               <span itemProp="addressLocality">Leipzig</span>
               <span itemProp="addressRegion">SN</span>
